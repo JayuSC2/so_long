@@ -11,7 +11,7 @@ else
 endif
 
 MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+MLX_LIB = $(MLX_DIR)/libmlx$(UNAME).a
 ifeq ($(shell uname), Linux)
 	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -LXext -lX11
 else
