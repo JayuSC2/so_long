@@ -26,5 +26,5 @@ all: $(MLX_LIB) $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
-$(MLX_LIB)
+$(MLX_LIB):
 	@make -C $(MLX_DIR)
