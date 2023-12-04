@@ -1,30 +1,42 @@
 NAME = so_long.a
-
 CC = CC
-
 CFLAGS = -Wall -Wextra -Werror
+MLX = mlx/makefile.gen
+LFT = libft/libft.a
+INC = -I ./inc -I ./libft -I ./mlx
+LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lx11 -lm -lbsd
+OBJ = $(patsubst src%, obj%, $(SRC.:.c=.o))
+SRC = so_long.c \
 
-ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx
-else
-	INCLUDE = I/opt/X11/include -Imlx
-endif
-
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx$(UNAME).a
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -LXext -lX11
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
-
-all: $(MLX_LIB) $(NAME)
+all: $(MLX) $(LFT) $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
+$(MLX):
+	@echo " [ .. ] | Compiling minilibx.."
+	@make -C mlx
+	@echo " [ OK ] | Minilibx ready!"
+
+$(LFT):
+	@echo " [ .. ] | Compiling libft"
+	@make -C libft
+	@echo " [ .. ] | Libft ready!"
+
+clean:
+	@make $@ -C libft
+	@rm -f $(OBJ)
+	@echo "object files removed."
+
+fclean: clean
+			@make $@ -C libft
+			@rm -f $(NAME)
+			@echo "binary file removed."
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
