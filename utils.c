@@ -6,11 +6,32 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2023/12/31 15:39:38 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:09:28 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+size_t ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return (0);
+    while (str[i])
+        i++;
+    return (i);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s != 0)
+		write (fd, s, ft_strlen(s));
+}
 
 void	ft_error(char *str)
 {
@@ -52,11 +73,14 @@ int main(int argc, char **argv)
     int ret;
     char *line;
 
-    if (argc != 2)
-        ft_error("Error\nInvalid map");
+    /* if (argc != 2)
+        ft_error("Error\nInvalid map"); */
     fd = open("gnltest.txt", O_RDONLY);
     if (fd == -1)
         ft_error("Error\nInvalid map");
+    line = malloc(sizeof(char) * 2); // Allocate memory for line
+    if (!line)
+        ft_error("Error\nMemory allocation failed");
     while ((ret = get_next_line(fd, &line)) > 0)
     {
         printf("%s\n", line);

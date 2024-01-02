@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:40:38 by juitz             #+#    #+#             */
-/*   Updated: 2023/11/10 09:05:09 by juitz            ###   ########.fr       */
+/*   Created: 2023/09/19 19:46:03 by juitz             #+#    #+#             */
+/*   Updated: 2024/01/02 16:45:04 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_printstr(char *s)
 {
-	if(lst)
+	if (!s)
+		return (write(1, "(null)", 6));
+	if (s != 0)
 	{
-		new->next = *lst;
-		*lst = new;
+		write (1, s, ft_strlen(s));
 	}
-}	
+	return (ft_strlen(s));
+}
+
+/* int	main(void)
+{
+	char str[] = "";
+	ft_putstr(str);
+} 
+ */

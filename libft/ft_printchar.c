@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:39:53 by juitz             #+#    #+#             */
-/*   Updated: 2023/11/16 14:40:59 by juitz            ###   ########.fr       */
+/*   Created: 2023/09/19 19:44:07 by juitz             #+#    #+#             */
+/*   Updated: 2024/01/02 16:44:52 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_printchar(int c)
 {
-	
+	write(1, &c, 1);
+	return (1);
 }

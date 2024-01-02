@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:07 by juitz             #+#    #+#             */
-/*   Updated: 2023/10/23 13:20:08 by juitz            ###   ########.fr       */
+/*   Updated: 2024/01/02 16:46:18 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdarg.h>
-#include <stdio.h>
+#include "libft.h"
 
 static int	check_type(const char *format, void *args)
 {
@@ -20,9 +18,9 @@ static int	check_type(const char *format, void *args)
 
 	counter = 0;
 	if (*format == 'c')
-		counter += ft_putchar((long int) args);
+		counter += ft_printchar((long int) args);
 	else if (*format == 's')
-		counter += ft_putstr((char *) args);
+		counter += ft_printstr((char *) args);
 	else if (*format == 'd' || *format == 'i')
 		counter += ft_printnbr((long int) args);
 	else if (*format == 'u')
@@ -53,10 +51,10 @@ int	ft_printf(const char *str, ...)
 			if (ft_strchr("cspdiuxX", *str))
 				counter += check_type(str, va_arg(args, void *));
 			else if (*str == '%')
-				counter += ft_putchar (*str);
+				counter += ft_printchar (*str);
 		}
 		else
-			counter += ft_putchar (*str);
+			counter += ft_printchar (*str);
 		str++;
 	}
 	va_end(args);

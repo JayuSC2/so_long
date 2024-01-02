@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2023/12/31 15:24:23 by julian           ###   ########.fr       */
+/*   Updated: 2023/12/31 15:44:52 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,19 @@ void    read_map(t_data *t_map, char *argv)
     close(fd);
     map_check(t_map);
 }
+
+int main(int argc, char **argv)
+{
+    t_data t_map;
+
+    if (argc != 2)
+        ft_error("Error\nInvalid map");
+    t_map.map = malloc(sizeof(t_map.map));
+    if (!t_map.map)
+        ft_error("Error\nInvalid map");
+    read_map(&t_map, argv[1]);
+    return (0);
+}
+
+
+
