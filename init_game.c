@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/01/09 15:13:23 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/09 19:52:46 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void    init_variables(t_data *data)
 
 void	init_textures(t_data *data)
 {
-    data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/wall.xpm", &TEXTURE_SIZE, &TEXTURE_SIZE);
-    data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/empty.xpm", &TEXTURE_SIZE, &TEXTURE_SIZE);
-    data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/collectible.xpm", &TEXTURE_SIZE, &TEXTURE_SIZE);
-    data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/exit.xpm", &TEXTURE_SIZE, &TEXTURE_SIZE);
-    data->textures[4] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/player.xpm", &TEXTURE_SIZE, &TEXTURE_SIZE);
+    data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/wall.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
+    data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/empty.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
+    data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/collectible.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
+    data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/exit.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
+    data->textures[4] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/player.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
 }
 
 void	init_player(t_data *data)
