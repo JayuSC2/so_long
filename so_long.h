@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2023/12/31 15:45:07 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/09 14:57:51 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,26 @@
 #define WINDOW_TITLE "so_long"
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
+#define TEXTURE_SIZE 64
 
 typedef struct s_player
 {
 	int		x;
 	int		y;
+	int		is_set;
 	int		moves;
 }				t_player;
 
 typedef struct s_map
 {
+	char	**full;
 	int		width;
 	int		height;
-	char	**map;
+	int		collectibles;
+	int		exit;
+	int		x;
+	int		y;
+	t_player		player;
 }				t_map;
 
 typedef struct s_data
@@ -51,9 +58,8 @@ typedef struct s_data
 
 int on_destroy(t_data *data);
 int	on_keypress(int keysym, t_data *data);
-int get_next_line(int fd, char **line);
 void	ft_error(char *str);
-void    read_map(t_data *t_map, char *argv);
-void	map_check(t_data *t_map);
+void 	read_map(t_data *t_map, char *argv);
+void	map_check(t_data *data);
 
 #endif

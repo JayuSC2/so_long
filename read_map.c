@@ -6,13 +6,23 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2023/12/31 15:44:52 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/08 21:36:20 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_check(t_data *t_map)
+void check_arguments(int argc, char **argv)
+{
+    if (argc != 2)
+        ft_error("Error\nInvalid map");
+    if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
+        ft_error("Error\nInvalid map");
+}
+
+
+
+void	map_check(t_data  *t_map)
 {
     int i;
     int j;
@@ -25,47 +35,54 @@ void	map_check(t_data *t_map)
         {
             if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' && t_map->map[i][j] != 'P' && t_map->map[i][j] != 'C' && t_map->map[i][j] != 'E')
                 ft_error("Error\nInvalid map");
+            if (t_map->map[0][j] != '1' && t_map->map[t_map->map->height - 1][j] != '1')
+                ft_error("Error\nInvalid map");
+            if (t_map->map[i][0] != '1' && t_map->map[i][t_map->map->width - 1] != '1')
+                ft_error("Error\nInvalid map");
             j++;
         }
         i++;
     }
 }
 
-void    read_map(t_data *t_map, char *argv)
+void count_collectibles(t_data *data)
 {
-    int fd;
-    int ret;
-    char *line;
     int i;
+    int j;
 
     i = 0;
+    data->map->collectibles = 0;
+    while (data->map->map[i])
+    {
+        j = 0;
+        while (data->map->map[i][j])
+        {
+            if (data->map->map[i][j] == 'C')
+                data->map->collectibles++;
+            j++;
+        }
+        i++;
+    }
+}
+
+void	read_map (t_data *data, char *argv)
+{
+    int		fd;
+    char	*line;
+
     fd = open(argv, O_RDONLY);
     if (fd == -1)
         ft_error("Error\nInvalid map");
-    while ((ret = get_next_line(fd, &line)) > 0)
+    data->map->height = 0;
+    while ((line = get_next_line(fd)))
     {
-        t_map->map[i] = ft_strdup(line);
-        free(line);
-        i++;
+        data->map->map = realloc(data->map->map, sizeof(char *) * (data->map->height + 2));
+        if (!data->map->map)
+            ft_error("Error\nInvalid map");
+        data->map->map[data->map->height] = line;
+        data->map->map[data->map->height + 1] = NULL;
+        data->map->height++;
     }
-    t_map->map[i] = ft_strdup(line);
-    free(line);
     close(fd);
-    map_check(t_map);
+    map_check(data);
 }
-
-int main(int argc, char **argv)
-{
-    t_data t_map;
-
-    if (argc != 2)
-        ft_error("Error\nInvalid map");
-    t_map.map = malloc(sizeof(t_map.map));
-    if (!t_map.map)
-        ft_error("Error\nInvalid map");
-    read_map(&t_map, argv[1]);
-    return (0);
-}
-
-
-
