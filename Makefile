@@ -3,10 +3,10 @@ CC = CC
 CFLAGS = -Wall -Wextra -Werror
 MLX = mlx/makefile.gen
 LFT = libft/libft.a
-INC = -I ./inc -I ./libft -I ./mlx
+INC = -I ./libft -I ./mlx
 LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lx11 -lm -lbsd
 OBJ = $(patsubst src%, obj%, $(SRC.:.c=.o))
-SRC = so_long.c \
+SRC = $(wildcard src/*.c)
 
 all: $(MLX) $(LFT) $(NAME)
 

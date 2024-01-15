@@ -6,32 +6,11 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/01/04 21:25:48 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/11 18:12:24 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-size_t ft_strlen(char *str)
-{
-    int i;
-
-    i = 0;
-    if (!str)
-        return (0);
-    while (str[i])
-        i++;
-    return (i);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s != 0)
-		write (fd, s, ft_strlen(s));
-}
+#include "so_long.h"
 
 void	ft_error(char *str)
 {

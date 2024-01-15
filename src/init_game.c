@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/01/09 19:52:46 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/11 17:08:41 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void    init_variables(t_data *data)
 {
     data->map->collectibles = 0;
     data->map->exit = 0;
-    data->map->x = 0;
-    data->map->y = 0;
+    data->map->player.x = 0;
+    data->map->player.y = 0;
     data->map->player.is_set = 0;
     data->map->player.moves = 0;
 }
 
 void	init_textures(t_data *data)
 {
-    data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/wall.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
-    data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/empty.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
-    data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/collectible.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
-    data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/exit.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
-    data->textures[4] = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/player.xpm", &TEXTURE_WIDTH &TEXTURE_HEIGHT);
+    data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/walls/wall.xpm", TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    data->floor = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/floor/floors.xpm", TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/collectibles/chest_01_0.xpm", TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    data->exit_closed = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/exits/exit_closed.xpm", TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    data->player_front = mlx_xpm_file_to_image(data->mlx_ptr, "./textures/characters/player_front.xpm", TEXTURE_WIDTH, TEXTURE_HEIGHT);
 }
 
 void	init_player(t_data *data)
@@ -57,7 +57,7 @@ void	init_player(t_data *data)
         ft_error("Error\nInvalid map");
 }
 
-void	init_game(t_data *data)
+/* void	init_game(t_data *data)
 {
     data->mlx_ptr = mlx_init();
     data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
@@ -67,5 +67,5 @@ void	init_game(t_data *data)
     mlx_hook(data->win_ptr, 17, 1L << 17, on_destroy, data);
     mlx_loop(data->mlx_ptr);
 }
-
+ */
 
