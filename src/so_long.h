@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/01/11 17:17:39 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/25 14:54:47 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include "mlx.h"
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 
 #define WINDOW_TITLE "so_long"
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 #define TEXTURE_WIDTH 16
 #define TEXTURE_HEIGHT 16
+#define COLLECTIBLES_AMOUNT 3
 
 #define KEY_W 119
 #define KEY_A 97
@@ -55,6 +56,14 @@
 # define GREY 				"\033[0;90m"
 # define CYAN				"\033[1;96m"
 # define RESET 				"\033[0m"
+
+typedef struct s_point
+{
+	int size;
+	int cur;
+	int x;
+	int y;
+}				t_point;
 
 typedef struct s_player
 {
@@ -85,6 +94,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	to_fill;
 	t_image *floor;
 	t_image *wall;
 	t_image *collectible;

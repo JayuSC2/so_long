@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/01/04 21:34:39 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/19 14:00:48 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,21 @@ void read_map(t_data *data, char *argv)
     fd = open(argv, O_RDONLY);
     if (fd == -1)
         ft_error("Error\nInvalid map");
-
-    // Initialize the map height to 0
     data->map->height = 0;
-
-    // Read each line of the map file using get_next_line
-    while ((line = get_next_line(fd)))
+	while ((line = get_next_line(fd)))
     {
-        // Reallocate memory for the map array to accommodate the new line
         data->map = realloc(data->map, sizeof(char *) * (data->map->height + 2));
         if (!data->map)
             ft_error("Error\nInvalid map");
-
-        // Store the line in the map array
         data->map[data->map->height] = line;
         data->map[data->map->height + 1] = NULL;
-
-        // Increment the map height
         data->map->height++;
     }
     map_check(data);
     close(fd);
 }
 
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
     t_data *data;
 
@@ -76,5 +67,5 @@ int main(int argc, char **argv)
         ft_error("Error\nMemory allocation failed");
     read_map(data, argv[1]);
     return (0);
-}
+} */
 

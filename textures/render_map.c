@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:56:01 by julian            #+#    #+#             */
-/*   Updated: 2024/01/11 16:59:58 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:32:20 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int render_map (t_data *data)
             else if (data->map->full[i][j] == 'E')
                 mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->exit_closed, j * TEXTURE_WIDTH, i * TEXTURE_HEIGHT);
             else if (data->map->full[i][j] == 'P')
-           { 
                 mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->player_front, j * TEXTURE_WIDTH, i * TEXTURE_HEIGHT);
-
-
             j++;
         }
         i++;

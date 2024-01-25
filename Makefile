@@ -3,10 +3,15 @@ CC = CC
 CFLAGS = -Wall -Wextra -Werror
 MLX = mlx/makefile.gen
 LFT = libft/libft.a
-INC = -I ./libft -I ./mlx
+INC = -I ./inc -I ./libft -I ./mlx
 LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lx11 -lm -lbsd
 OBJ = $(patsubst src%, obj%, $(SRC.:.c=.o))
-SRC = $(wildcard src/*.c)
+SRC = so_long.c \
+read_map.c \
+check_map.c \
+init_game.c \
+render_map.c \
+utils.c
 
 all: $(MLX) $(LFT) $(NAME)
 
@@ -18,13 +23,13 @@ $(NAME): $(OBJ)
 
 $(MLX):
 	@echo " [ .. ] | Compiling minilibx.."
-	@make -C mlx
+	@make -s -C mlx
 	@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):
 	@echo " [ .. ] | Compiling libft"
-	@make -C libft
-	@echo " [ .. ] | Libft ready!"
+	@make -s -C libft
+	@echo " [ OK ] | Libft ready!"
 
 clean:
 	@make $@ -C libft

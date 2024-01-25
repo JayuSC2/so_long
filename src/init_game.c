@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/01/11 17:08:41 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/25 17:15:17 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,27 @@ void    init_variables(t_data *data)
     data->map->player.y = 0;
     data->map->player.is_set = 0;
     data->map->player.moves = 0;
+}
+
+void	fill(char **full_map, t_point size, t_point cur, char fill_char)
+{
+	//char **full_map;
+
+	//fill_char = data.to_fill;
+	//full_map = data.map->full;
+
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x || full_map[cur.y][cur.x] != fill_char)
+		return;
+	full_map[cur.y][cur.x] = 1;
+	fill(full_map, size, (t_point){cur.x -1, cur.y}, fill_char);
+	fill(full_map, size, (t_point){cur.x +1, cur.y}, fill_char);
+	fill(full_map, size, (t_point){cur.x, cur.y -1}, fill_char);
+	fill(full_map, size, (t_point){cur.x, cur.y +1}, fill_char);
+
+void	fill_map(char **full_map, t_point size, t_point begin)
+{
+	fill_(full_map, size, begin, )
+}
 }
 
 void	init_textures(t_data *data)
