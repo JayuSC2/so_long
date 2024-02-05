@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/01/25 17:15:17 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:01:29 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	fill(char **full_map, t_point size, t_point cur, char fill_char)
 	fill(full_map, size, (t_point){cur.x +1, cur.y}, fill_char);
 	fill(full_map, size, (t_point){cur.x, cur.y -1}, fill_char);
 	fill(full_map, size, (t_point){cur.x, cur.y +1}, fill_char);
+}
 
 void	fill_map(char **full_map, t_point size, t_point begin)
 {
-	fill_(full_map, size, begin, )
-}
+	fill(full_map, size, begin, full_map[begin.x][begin.y]);
 }
 
 void	init_textures(t_data *data)

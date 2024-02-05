@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/01/22 19:47:29 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:58:55 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ void check_arguments(int argc, char **argv)
         ft_error("Error\nInvalid map");
 }
 
-void	map_check(t_data  *t_map)
+void	map_check(t_data  *t_data)
 {
     int i;
     int j;
 
     i = 0;
     j = 0;
-    while (t_map->map[i])
+    while (t_data->map->full[i])
     {
-        while (t_map->map[i][j])
+        while (t_data->map->full[i][j])
         {
-            if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' && t_map->map[i][j] != 'P' && t_map->map[i][j] != 'C' && t_map->map[i][j] != 'E')
+            if (t_data->map->full[i][j] != '1' && t_data->map->full[i][j] != '0' && t_data->map->full[i][j] != 'P' && t_data->map->full[i][j] != 'C' && t_data->map->full[i][j] != 'E')
                 ft_error("Error\nInvalid map");
-            if (t_map->map[0][j] != '1' && t_map->map[t_map->map->height - 1][j] != '1')
+            if (t_data->map->full[0][j] != '1' && t_data->map->full[t_data->map->height - 1][j] != '1')
                 ft_error("Error\nInvalid map");
-            if (t_map->map[i][0] != '1' && t_map->map[i][t_map->map->width - 1] != '1')
+            if (t_data->map->full[i][0] != '1' && t_data->map->full[i][t_data->map->width - 1] != '1')
                 ft_error("Error\nInvalid map");
             j++;
         }
@@ -50,12 +50,12 @@ void count_collectibles(t_data *data)
 
     i = 0;
     data->map->collectibles = 0;
-    while (data->map->map[i])
+    while (data->map->full[i])
     {
         j = 0;
-        while (data->map->map[i][j])
+        while (data->map->full[i][j])
         {
-            if (data->map->map[i][j] == 'C')
+            if (data->map->full[i][j] == 'C')
                 data->map->collectibles++;
             j++;
         }
@@ -74,11 +74,11 @@ void	read_map (t_data *data, char *argv)
     data->map->height = 0;
     while ((line = get_next_line(fd)))
     {
-        data->map->map = realloc(data->map->map, sizeof(char *) * (data->map->height + 2));
-        if (!data->map->map)
+        data->map->full = realloc(data->map->full, sizeof(char *) * (data->map->height + 2));
+        if (!data->map->full)
             ft_error("Error\nInvalid map");
-        data->map->map[data->map->height] = line;
-        data->map->map[data->map->height + 1] = NULL;
+        data->map->full[data->map->height] = line;
+        data->map->full[data->map->height + 1] = NULL;
         data->map->height++;
     }
     close(fd);
