@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/25 17:02:06 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/25 17:04:21 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int handle_input(int keysym, t_data *data)
 		free(data->mlx_ptr);
 		exit(1);
 	}
+	printf("Pressed key: %d\n", keysym);
+	return (0);
 }
 
 int on_destroy(t_data *data)
@@ -33,12 +35,12 @@ int on_destroy(t_data *data)
 	exit(0);
 	return(0);
 }
-int	on_keypress(int keysym, t_data *data)
+/* int	on_keypress(int keysym, t_data *data)
 {
 	(void)data;
 	printf("Pressed key: %d\n", keysym);
 	return (0);
-}
+} */
 
 int main(void)
 {
@@ -52,7 +54,7 @@ int main(void)
 		return (free(data.mlx_ptr), 1);
 	
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 
 	mlx_loop(data.mlx_ptr);
