@@ -6,10 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/01/25 14:54:47 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/25 14:33:12 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#define _DEFAULT_SOURCE
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
