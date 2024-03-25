@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/25 17:04:21 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/25 17:29:07 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int handle_input(int keysym, t_data *data)
 {
-	if (keysym == XK_Escape)
+	if (keysym == KEY_ESC)
 	{
 		printf("The %d key (ESC) has been pressed!", keysym);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
@@ -52,6 +52,7 @@ int main(void)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
+	//render_map(t_data *data);
 	
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);

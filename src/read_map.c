@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/02/05 14:58:55 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/25 17:27:54 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void check_arguments(int argc, char **argv)
         ft_error("Error\nInvalid map");
 }
 
-void	map_check(t_data  *t_data)
+void	map_check(t_data *t_data)
 {
     int i;
     int j;
