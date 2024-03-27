@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:29:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/01 18:32:11 by julian           ###   ########.fr       */
+/*   Updated: 2024/03/27 17:15:24 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_join_and_free(char *text, char *buffer)
 {
@@ -97,7 +98,42 @@ char	*clean_line(char *text)
 	return (str);
 }
 
-char	*get_next_line(int fd)
+int get_next_line(int fd, char **line)
+{
+	//char		*output_text;
+	static char	*text;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (-1);
+	text = read_line(fd, text);
+	if (!text)
+		return (-1);
+	*line = extract_line(text);
+	text = clean_line(text);
+	return (0);
+}
+
+int	main(void)
+{
+	int		file;
+	char	*line;
+
+	file = open("testtext.txt", O_RDONLY);
+	if (file == -1)
+	{
+		printf("Failed to open file.\n");
+		return (1);
+	}
+	while (get_next_line(file, &line) == 0)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	close(file);
+	return (0);
+}
+
+/* char	*get_next_line(int fd)
 {
 	char		*output_text;
 	static char	*text;
@@ -112,7 +148,7 @@ char	*get_next_line(int fd)
 	return (output_text);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	int	file;
 	char *buffer;

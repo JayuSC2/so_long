@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/03/25 17:27:54 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/27 16:55:20 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,14 @@ void count_collectibles(t_data *data)
 void	read_map (t_data *data, char *argv)
 {
     int		fd;
+	//int		ret;
     char	*line;
 
     fd = open(argv, O_RDONLY);
     if (fd == -1)
         ft_error("Error\nInvalid map");
     data->map->height = 0;
-    while ((line = get_next_line(fd)))
+	while ((get_next_line(fd)))
     {
         data->map->full = realloc(data->map->full, sizeof(char *) * (data->map->height + 2));
         if (!data->map->full)

@@ -1,47 +1,33 @@
 NAME = so_long.a
-CC = CC
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 MLX = mlx/makefile.gen
 LFT = libft/libft.a
 INC = -I ./inc -I ./libft -I ./mlx
 LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lx11 -lm -lbsd
-OBJ = $(patsubst src%, obj%, $(SRC.:.c=.o))
-SRC = so_long.c \
+SRC = main.c \
 read_map.c \
 check_map.c \
 init_game.c \
 render_map.c \
 utils.c
 
-all: $(MLX) $(LFT) $(NAME)
+OBJS = $(SRCS:.c=.o)
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o
+all: $(NAME)
+$(NAME): $(OBJS)
+	@$(MAKE) -s -C ./libft
+	@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
+	@echo "Program ready!"
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
-$(MLX):
-	@echo " [ .. ] | Compiling minilibx.."
-	@make -s -C mlx
-	@echo " [ OK ] | Minilibx ready!"
-
-$(LFT):
-	@echo " [ .. ] | Compiling libft"
-	@make -s -C libft
-	@echo " [ OK ] | Libft ready!"
-
-clean:
-	@make $@ -C libft
-	@rm -f $(OBJ)
-	@echo "object files removed."
+clean: 
+	@$(MAKE) -s -C ./libft fclean
+	@$(RM) $(OBJS)
+	@echo "Program cleaned successfully!"
 
 fclean: clean
-			@make $@ -C libft
-			@rm -f $(NAME)
-			@echo "binary file removed."
+	@$(RM) $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-

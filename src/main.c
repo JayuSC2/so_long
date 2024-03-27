@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/25 17:29:07 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/27 16:57:58 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,21 @@ int on_destroy(t_data *data)
 	return (0);
 } */
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_data data;
 
+	/* if (argc < 2)
+		ft_putendl_fd("Error: please provide a valid map", 2);
+	if (argc > 2)
+		ft_putendl_fd("Error: too many arguments", 2); */
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
+	read_map(data.map->full, argv[1]);
 	//render_map(t_data *data);
 	
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);

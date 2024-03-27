@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/25 14:33:12 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/26 15:33:39 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ typedef struct s_data
 	t_map	*map;
 }				t_data;
 
-int on_destroy(t_data *data);
-int	on_keypress(int keysym, t_data *data);
+int		on_destroy(t_data *data);
+int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);
 void 	read_map(t_data *t_map, char *argv);
 void	map_check(t_data *data);

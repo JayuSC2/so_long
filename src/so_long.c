@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 13:35:29 by julian            #+#    #+#             */
-/*   Updated: 2023/12/31 13:36:07 by julian           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:24:54 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	on_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-int main(void)
+/* int main(void)
 {
 	t_data data;
 
@@ -45,7 +45,7 @@ int main(void)
 
 	mlx_loop(data.mlx_ptr);
 	return (0);
-}
+} */
 /* int main(void)
 {
 	void *mlx_ptr;

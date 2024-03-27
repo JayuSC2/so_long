@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/01/19 14:00:48 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/27 17:31:18 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	map_check(t_data *t_map)
 
     i = 0;
     j = 0;
-    while (t_map->map[i])
+    while (t_map->map->full[i])
     {
-        while (t_map->map[i][j])
+        while (t_map->map->full[i][j])
         {
-            if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' && t_map->map[i][j] != 'P' && t_map->map[i][j] != 'C' && t_map->map[i][j] != 'E')
+            if (t_map->map->full[i][j] != '1' && t_map->map->full[i][j] != '0' && t_map->map->full[i][j] != 'P' && t_map->map->full[i][j] != 'C' && t_map->map->full[i][j] != 'E')
                 ft_error("Error\nInvalid map");
             j++;
         }
@@ -31,7 +31,7 @@ void	map_check(t_data *t_map)
     }
 }
 
-void read_map(t_data *data, char *argv)
+void	read_map(t_data *t_map, char *argv)
 {
     int fd;
     char *line;
@@ -39,17 +39,17 @@ void read_map(t_data *data, char *argv)
     fd = open(argv, O_RDONLY);
     if (fd == -1)
         ft_error("Error\nInvalid map");
-    data->map->height = 0;
+    t_map->map->height = 0;
 	while ((line = get_next_line(fd)))
     {
-        data->map = realloc(data->map, sizeof(char *) * (data->map->height + 2));
-        if (!data->map)
+        t_map->map = realloc(t_map->map, sizeof(char *) * (t_map->map->height + 2));
+        if (!t_map->map)
             ft_error("Error\nInvalid map");
-        data->map[data->map->height] = line;
-        data->map[data->map->height + 1] = NULL;
-        data->map->height++;
+        t_map->map[t_map->map->height] = line;
+        t_map->map[t_map->map->height + 1] = NULL;
+        t_map->map->height++;
     }
-    map_check(data);
+    map_check(t_map);
     close(fd);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:57:28 by juitz             #+#    #+#             */
-/*   Updated: 2024/01/02 16:41:00 by julian           ###   ########.fr       */
+/*   Updated: 2024/03/27 17:15:10 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,13 @@
 # include <fcntl.h>
 # include <stdarg.h>
 
-typedef struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-void 	ft_lstdelone(t_list *lst, void (*del)(void*));
-void 	ft_lstclear(t_list **lst, void (*del)(void*));
-t_list *ft_lstnew(void *content);
-t_list *ft_lstlast(t_list *lst);
-void 	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_bzero(void *s, size_t n);
 int		ft_printf(const char *str, ...);
+int		ft_isnumber(char *str);
 int		ft_isalnum(int input);
 int		ft_isascii(int input);
 int		ft_isalpha(int input);
@@ -64,8 +54,9 @@ void	ft_striteri(char *str, void (*f)(unsigned int, char*));
 char	*ft_itoa(int len);
 char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
-char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
+int		get_next_line(int fd, char **line);
+//char	*get_next_line(int fd);
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
 char	*read_line(int fd, char *text);
 char	*extract_line(char *text);

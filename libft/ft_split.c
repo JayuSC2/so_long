@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
 static size_t	ft_countword(char const *s, char c)
 {
@@ -81,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	split_strings[i] = NULL;
 	return (split_strings);
 }
-#include <stdio.h>
+/* #include <stdio.h>
 int main(void)
 {
     char const *input = "This,is,a,test,string";
@@ -102,4 +100,4 @@ int main(void)
     }
 
     return 0;
-}
+} */
