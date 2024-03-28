@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/03/28 18:49:03 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/28 19:41:58 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,35 @@ void	read_map (char **argv)
     close(fd);
     map_check(data);
 }
+
+/* void	read_map (char **argv)
+{
+	int		fd;
+	t_data *data;
+	//int		ret;
+	char	*line;
+	
+	fd = open(*argv, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nInvalid map");
+	data = malloc(sizeof(t_data));
+	if (!data)
+		ft_error("Error\nInvalid map");
+	data->map->height = 0;
+	while ((get_next_line(fd, &line) == 0))
+	{
+		data->map->full = malloc(ft_strlen(line) * (count_height(argv)));
+		if (!data->map->full)
+			ft_error("Error\nInvalid map");
+		data->map->full[data->map->height] = line;
+		data->map->full[data->map->height + 1] = NULL;
+		data->map->height++;
+		free(line);
+	}
+	free(data->map->full);
+	close(fd);
+	map_check(data);
+} */
 
 /* #include <stdio.h>
 
