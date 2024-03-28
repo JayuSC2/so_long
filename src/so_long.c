@@ -6,14 +6,14 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 13:35:29 by julian            #+#    #+#             */
-/*   Updated: 2024/03/26 15:24:54 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/28 15:34:59 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 //void map_check()
-
+/* 
 int on_destroy(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
@@ -28,7 +28,7 @@ int	on_keypress(int keysym, t_data *data)
 	printf("Pressed key: %d\n", keysym);
 	return (0);
 }
-
+ */
 /* int main(void)
 {
 	t_data data;

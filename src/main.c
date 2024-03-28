@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/27 16:57:58 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/28 18:39:50 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int main(int argc, char **argv)
 {
 	t_data data;
 
+	check_arguments(argc, &argv[1]);
 	/* if (argc < 2)
 		ft_putendl_fd("Error: please provide a valid map", 2);
 	if (argc > 2)
@@ -56,13 +57,13 @@ int main(int argc, char **argv)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	read_map(data.map->full, argv[1]);
+	read_map(&argv[1]);
+	render_map()
 	//render_map(t_data *data);
 	
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }

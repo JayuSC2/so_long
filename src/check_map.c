@@ -6,11 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/03/27 17:31:18 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/28 15:07:55 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+/* #include "so_long.h"
 
 void	map_check(t_data *t_map)
 {
@@ -52,7 +52,7 @@ void	read_map(t_data *t_map, char *argv)
     map_check(t_map);
     close(fd);
 }
-
+ */
 /* int main(int argc, char **argv)
 {
     t_data *data;
