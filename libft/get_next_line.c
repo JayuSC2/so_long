@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:29:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/27 17:15:24 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/28 15:53:48 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ int	main(void)
 		printf("Failed to open file.\n");
 		return (1);
 	}
-	while (get_next_line(file, &line) == 0)
+	while (get_next_line(file, &line) == 0 && line != NULL)
 	{
-		printf("%s\n", line);
+		printf("%s", line);
 		free(line);
 	}
 	close(file);
@@ -146,9 +146,9 @@ int	main(void)
 	output_text = extract_line(text);
 	text = clean_line(text);
 	return (output_text);
-}
+}*/
 
-int	main(void)
+/* int	main(void)
 {
 	int	file;
 	char *buffer;
