@@ -6,11 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:25:45 by juitz             #+#    #+#             */
-/*   Updated: 2024/02/20 11:55:40 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/29 16:15:59 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/* #include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -77,4 +77,4 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(ptr, size * count);
 	return (ptr);
-}
+} */

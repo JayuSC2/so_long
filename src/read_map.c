@@ -6,15 +6,13 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/03/28 19:41:58 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/29 16:09:20 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#include <stddef.h>
-
-size_t	ft_strlen(const char *str)
+/* size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -24,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
-}
+} */
 void check_arguments(int argc, char **argv)
 {
     if (argc != 2)
@@ -113,7 +111,35 @@ size_t count_height(char **full_map)
 	return (counter);
 } */
 
-void	read_map (char **argv)
+void read_map (char **argv)
+{
+	int		fd;
+	t_data *data;
+	char	*line;
+	
+	fd = open(*argv, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nInvalid map");
+	data = malloc(sizeof(t_data));
+	if (!data)
+		ft_error("Error\nInvalid map");
+	data->map->height = 0;
+	while ((get_next_line(fd, &line) == 0))
+	{
+		data->map->full = malloc(ft_strlen(line) * (count_height(argv)));
+		if (!data->map->full)
+			ft_error("Error\nInvalid map");
+		data->map->full[data->map->height] = line;
+		data->map->full[data->map->height + 1] = NULL;
+		data->map->height++;
+		free(line);
+	}
+	free(data->map->full);
+	close(fd);
+	map_check(data);
+}
+
+/* void	read_map (char **argv)
 {
     int		fd;
 	t_data *data;
@@ -137,7 +163,7 @@ void	read_map (char **argv)
 	free(data->map->full);
     close(fd);
     map_check(data);
-}
+} */
 
 /* void	read_map (char **argv)
 {
@@ -166,6 +192,19 @@ void	read_map (char **argv)
 	free(data->map->full);
 	close(fd);
 	map_check(data);
+} */
+
+/* #include <stdio.h>
+
+int main(int argc, char **argv) 
+{
+	if (argc != 2) 
+	{
+		printf("Usage: %s <map_file>\n", argv[0]);
+		return (1);
+	}
+	read_map(argv + 1);
+	return (0);
 } */
 
 /* #include <stdio.h>
