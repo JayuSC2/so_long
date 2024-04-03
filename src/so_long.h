@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/29 16:17:54 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/03 14:14:03 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
-#include "mlx.h"
+#include <mlx.h>
 #include "../libft/libft.h"
 
 #define WINDOW_TITLE "so_long"

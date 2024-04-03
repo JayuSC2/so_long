@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/29 15:03:15 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/03 17:23:58 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <X11/X.h>
 
 int handle_input(int keysym, t_data *data)
 {
@@ -45,19 +44,23 @@ int on_destroy(t_data *data)
 int main(int argc, char **argv)
 {
 	t_data data;
-
-	check_arguments(argc, &argv[1]);
-	/* if (argc < 2)
+	
+/* 	if (argc < 2)
 		ft_putendl_fd("Error: please provide a valid map", 2);
 	if (argc > 2)
 		ft_putendl_fd("Error: too many arguments", 2); */
+	check_arguments(argc, argv);
+	ft_printf("%s", "test\n");
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
+	ft_printf("%s", "test2\n");
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
+	ft_printf("%s", "test3\n");
 	read_map(&argv[1]);
+	ft_printf("%s", "test4\n");
 	render_map(&data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);

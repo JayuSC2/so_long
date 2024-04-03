@@ -1,9 +1,7 @@
-NAME = so_long.a
-CC = gcc
+NAME = so_long
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes
-MLX = mlx/makefile.gen
-INC = -I ./libft -I ./mlx
-LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
+MLX = -lmlx -lX11 -lXext
 SRC = src/so_long.c \
 src/read_map.c \
 src/check_map.c \
@@ -15,7 +13,7 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -s -C ./libft
-	@$(CC) $(CFLAGS) $(INC) $(LIB) $(MLX) $(OBJS) ./libft/libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLX) $(OBJS) ./libft/libft.a -o $(NAME)
 	@echo "Program ready!"
 
 clean: 
