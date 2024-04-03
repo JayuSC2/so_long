@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Iincludes -g
 MLX = -lmlx -lX11 -lXext
 SRC = src/so_long.c \
 src/read_map.c \

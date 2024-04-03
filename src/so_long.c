@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/03 17:23:58 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/03 18:46:28 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	ft_printf("%s", "test3\n");
-	read_map(&argv[1]);
+	read_map(argv);
 	ft_printf("%s", "test4\n");
 	render_map(&data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);

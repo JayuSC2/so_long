@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/03 17:44:31 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/03 18:46:23 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	check_arguments(int argc, char **argv)
     if (argc != 2)
         ft_error("Error\nInvalid map1");
     if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-        ft_error("Error\nInvalid ma2");
+    {
+		ft_error("Error\nInvalid map2");
+	}
 }
 
 void	map_check(t_data *data)
@@ -111,12 +113,12 @@ size_t count_height(char **full_map)
 	return (counter);
 } */
 
-void read_map (char **argv)
+void read_map(char **argv)
 {
 	int		fd;
 	t_data data;
 	char	*line;
-	
+
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_error("Error\nInvalid map6");
