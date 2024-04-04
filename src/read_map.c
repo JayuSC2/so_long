@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/03 18:46:23 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/04 16:43:48 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,37 +113,112 @@ size_t count_height(char **full_map)
 	return (counter);
 } */
 
+/* void read_map(char **argv)
+{
+    int		fd;
+    t_data	data;
+    char	*line;
+
+	line = NULL;
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1)
+	{
+    	ft_error("Error\nInvalid map6");
+	}
+	data.map->height = 0;
+    data.map->full = malloc(count_height(argv) * ft_strlen((line + 1)));
+	ft_printf("%s", "test1\n");
+    if (!data.map->full)
+        ft_error("Error\nMemory allocation failed");
+	while (get_next_line(fd, &line) == 0)
+    {
+		if (line != NULL)
+		{
+			data.map->full[data.map->height] = line;
+			data.map->height++;
+		}
+    }
+	data.map->full[data.map->height] = NULL;
+	close(fd);
+    map_check(&data);
+}
+ */
+ 
+/* void read_map(char **argv)
+{
+    int		fd;
+    t_data	data;
+    char	*line;
+
+	line = NULL;
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1)
+        ft_error("Error\nInvalid map6");
+    data.map = malloc(sizeof(t_map));
+	ft_printf("%s", "test1\n");
+    if (!data.map)
+	{
+        ft_error("Error\nMemory allocation failed");
+	}
+	ft_printf("%s", "test2\n");
+    data.map->height = 0;
+    data.map->full = malloc((count_height(argv) + 1) * sizeof(char*));  // Allocate memory for the lines, plus one for the NULL pointer at the end
+    if (!data.map->full)
+	{
+        ft_error("Error\nMemory allocation failed");
+	}
+	ft_printf("%s", "test3\n");
+	while (get_next_line(fd, &line) == 0)
+	{
+		if (line != NULL)
+		{
+			data.map->full[data.map->height] = line;
+			data.map->height++;
+		}
+	}
+	ft_printf("%s", "test4\n");
+    data.map->full[data.map->height] = NULL;
+	close(fd);
+    map_check(&data);
+} */
+
 void read_map(char **argv)
 {
 	int		fd;
-	t_data data;
-	char	*line;
+	t_data	data;
+	char	*line = NULL;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_error("Error\nInvalid map6");
 	data.map->height = 0;
-	while ((get_next_line(fd, &line) == 0))
+	ft_printf("%s", "test1\n");
+	data.map->full = malloc(count_height(argv) * sizeof(char*));
+	ft_printf("%s", "test2\n");
+	if (line != NULL)
 	{
-		data.map->full = malloc(ft_strlen(line) * (count_height(argv)));
-		if (!data.map->full)
-			ft_error("Error\nInvalid map7");
-		data.map->full[data.map->height] = line;
-		data.map->full[data.map->height + 1] = NULL;
-		data.map->height++;
-		free(line);
+		while ((get_next_line(fd, &line) == 0 && line != NULL))
+		{
+			data.map->full[data.map->height] = malloc(ft_strlen(line + 1) * (sizeof(char)));
+			if (!data.map->full[data.map->height])
+				ft_error("Error\nInvalid map7");
+			data.map->full[data.map->height] = line;
+			data.map->full[data.map->height + 1] = NULL;
+			data.map->height++;
+			free(line);
+		}
 	}
 	free(data.map->full);
 	close(fd);
-	map_check(&data);
+	//map_check(&data);
 }
 
 /* void	read_map (char **argv)
 {
     int		fd;
-	t_data *data;
+	t_data *data = NULL;
 	//int		ret;
-    char	*line;
+    char	*line = NULL;
 	
     fd = open(*argv, O_RDONLY);
     if (fd == -1)
@@ -178,6 +253,7 @@ void read_map(char **argv)
 	if (!data)
 		ft_error("Error\nInvalid map");
 	data->map->height = 0;
+	ft_printf("%s", "test1\n");
 	while ((get_next_line(fd, &line) == 0))
 	{
 		data->map->full = malloc(ft_strlen(line) * (count_height(argv)));
@@ -191,8 +267,8 @@ void read_map(char **argv)
 	free(data->map->full);
 	close(fd);
 	map_check(data);
-} */
-
+}
+ */
 /* #include <stdio.h>
 
 int main(int argc, char **argv) 

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:29:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/28 17:16:35 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/04 14:26:19 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int get_next_line(int fd, char **line)
 	int		file;
 	char	*line;
 
-	file = open("testtext.txt", O_RDONLY);
+	file = open("basic.ber", O_RDONLY);
 	if (file == -1)
 	{
 		printf("Failed to open file.\n");

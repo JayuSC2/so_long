@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/03 18:46:28 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/04 16:44:04 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,15 @@ int main(int argc, char **argv)
 	if (argc > 2)
 		ft_putendl_fd("Error: too many arguments", 2); */
 	check_arguments(argc, argv);
-	ft_printf("%s", "test\n");
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	ft_printf("%s", "test2\n");
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	ft_printf("%s", "test3\n");
 	read_map(argv);
 	ft_printf("%s", "test4\n");
-	render_map(&data);
+	//render_map(&data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
