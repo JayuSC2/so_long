@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/04 16:44:04 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/04 18:50:37 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int main(int argc, char **argv)
 		return (free(data.mlx_ptr), 1);
 	read_map(argv);
 	ft_printf("%s", "test4\n");
-	//render_map(&data);
+	texture_to_image(&data);
+	ft_printf("%s", "test5\n");
+	render_map(&data);
+	ft_printf("%s", "test6\n");
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);

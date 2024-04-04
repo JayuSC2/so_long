@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/03 14:14:03 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/04 18:49:42 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void 	read_map(char **argv);
 void	map_check(t_data *data);
 void	count_collectibles(t_data *data);
 void	init_game(t_data *data);
-void	init_textures(t_data *data);
+void	texture_to_image(t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
 int		render_map(t_data *data);
