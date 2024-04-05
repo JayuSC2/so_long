@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/01/11 18:12:24 by julian           ###   ########.fr       */
+/*   Updated: 2024/04/05 12:13:31 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_free(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
 
 void	ft_error(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/04 18:49:42 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/05 17:50:24 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 
 #define WALL_XPM "./textures/wall.xpm"
 #define FLOOR_XPM "./textures/floor.xpm"
-#define COLLECTIBLE_XPM "./textures/collectible.xpm"
-#define CLOSED_EXIT_XPM "./textures/closed_exit.xpm"
+#define COLLECTIBLE1_XPM "./textures/collectibles/chest_01_0.xpm"
+#define EXIT_CLOSED_XPM "./textures/exit_closed.xpm"
 #define OPEN_EXIT_XPM "./textures/open_exit.xpm"
 #define PLAYER_FRONT_XPM "./textures/player_front.xpm"
 #define PLAYER_BACK_XPM "./textures/player_back.xpm"
@@ -118,7 +118,7 @@ void	init_game(t_data *data);
 void	texture_to_image(t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
-int		render_map(t_data *data);
-
+void	render_map(t_data *data);
+void	ft_free(char **str);
 
 #endif

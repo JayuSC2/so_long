@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:29:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/04 14:26:19 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/05 11:33:12 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ int get_next_line(int fd, char **line)
 	}
 	close(file);
 	return (0);
-}
- */
+} */
+
 /* char	*get_next_line(int fd)
 {
 	char		*output_text;
