@@ -6,11 +6,19 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/05 17:12:55 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 16:54:16 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_map(t_data *data)
+{
+	data->map = malloc(sizeof(t_map));
+	data->map->full = (char **)malloc(9 * sizeof(char *));
+	data->map->height = 0;
+	data->map->width = 0;
+}
 
 void    init_variables(t_data *data)
 {
@@ -21,7 +29,6 @@ void    init_variables(t_data *data)
     data->map->player.is_set = 0;
     data->map->player.moves = 0;
 }
-
 /* void	fill(char **full_map, t_point size, t_point cur, char fill_char)
 {
 	//char **full_map;
