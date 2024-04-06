@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 11:24:45 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 16:33:24 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@
 
 #define KEY_ESC 65307
 
-#define WALL_XPM "./textures/wall.xpm"
-#define FLOOR_XPM "./textures/floor.xpm"
+#define WALL_XPM "./textures/walls/wall.xpm"
+#define FLOOR_XPM "./textures/floors/floor.xpm"
 #define COLLECTIBLE1_XPM "./textures/collectibles/chest_01_0.xpm"
-#define EXIT_CLOSED_XPM "./textures/exit_closed.xpm"
-#define OPEN_EXIT_XPM "./textures/open_exit.xpm"
-#define PLAYER_FRONT_XPM "./textures/player_front.xpm"
-#define PLAYER_BACK_XPM "./textures/player_back.xpm"
-#define PLAYER_LEFT_XPM "./textures/player_left.xpm"
-#define PLAYER_RIGHT_XPM "./textures/player_right.xpm"
+#define EXIT_CLOSED_XPM "./textures/exits/exit_closed.xpm"
+#define OPEN_EXIT_XPM "./textures/exits/open_exit.xpm"
+#define PLAYER_FRONT_XPM "./textures/characters/player_front.xpm"
+#define PLAYER_BACK_XPM "./textures/characters/player_back.xpm"
+#define PLAYER_LEFT_XPM "./textures/characters/player_left.xpm"
+#define PLAYER_RIGHT_XPM "./textures/characters/player_right.xpm"
 
 # define GREEN				"\033[0;32m"
 # define RED 				"\033[1;31m"
@@ -111,7 +111,7 @@ void	check_arguments(int argc, char **argv);
 int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);
-void 	read_map(int argc, char **argv);
+void	read_map(int argc, char **argv, t_data *data);
 void	map_check(t_data *data);
 void	count_collectibles(t_data *data);
 void	init_game(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 11:01:39 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 16:23:36 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int on_destroy(t_data *data)
 int main(int argc, char **argv)
 {
 	t_data data;
-	
+
+	data.map = malloc(sizeof(t_map));
+	data.map->full = (char **)malloc(9 * sizeof(char *));
+	data.map->height = 0;
+	data.map->width = 0;
 /* 	if (argc < 2)
 		ft_putendl_fd("Error: please provide a valid map", 2);
 	if (argc > 2)
@@ -56,7 +60,7 @@ int main(int argc, char **argv)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	read_map(argc, argv);
+	read_map(argc, argv, &data);
 	ft_printf("%s", "test4\n");
 	texture_to_image(&data);
 	ft_printf("%s", "test5\n");
