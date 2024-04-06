@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/05 16:35:03 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 15:05:05 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,32 +208,36 @@ size_t count_height(char **full_map)
 	close(fd);
     //map_check(&data);
 } */
-void read_map(char **argv)
+void read_map(int argc, char **argv)
 {
 	int		fd;
 	t_data	data;
 	char	*line = NULL;
+	(void)argc;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_error("Error\nInvalid map6");
 	data.map->height = 0;
 	ft_printf("%s", "test1\n");
-	data.map->full = malloc(count_height(argv) * sizeof(char*));
+	data.map->full = malloc(sizeof(char*));
 	ft_printf("%s", "test2\n");
 	while ((get_next_line(fd, &line) == 0 && line != NULL))
 	{
-		data.map->full[data.map->height] = malloc(ft_strlen(line + 1) * (sizeof(char)));
+		data.map->full[data.map->height] = malloc((ft_strlen(line) + 1) * sizeof(char));
 		if (!data.map->full[data.map->height])
 			ft_error("Error\nInvalid map7");
-		data.map->full[data.map->height] = line;
-		data.map->full[data.map->height + 1] = NULL;
-		ft_printf("%s", data.map->full[data.map->height]);
+		ft_strlcpy(data.map->full[data.map->height], line, ft_strlen(line) + 1);
 		data.map->height++;
 		free(line);
 	}
-	//free(data.map->full);
+	data.map->full[data.map->height] = NULL;
+	int i = 0;
+	while (data.map->full[i])
+		ft_printf("%s", data.map->full[i++]);
 	close(fd);
+
+	//free(data.map->full);
 	//map_check(&data);
 }
 
