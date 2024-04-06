@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 16:56:52 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 17:08:10 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_data
 	t_map	*map;
 }				t_data;
 
+void	init_game(t_data *data);
 void	init_map(t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);

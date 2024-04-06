@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 16:56:02 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/06 17:07:39 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 {
 	t_data data;
 
-	init_map(&data);
+	init_game(&data);
 /* 	if (argc < 2)
 		ft_putendl_fd("Error: please provide a valid map", 2);
 	if (argc > 2)
