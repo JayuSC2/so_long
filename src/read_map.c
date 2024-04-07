@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/07 13:50:59 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 14:53:09 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,22 @@ void	map_check(t_data *data)
     }
 } */
 
-size_t count_height(int argc, char **argv, t_data *data)
+/* int	count_height(int argc, char **argv)
 {
-	size_t counter;
-	int i;
+	int height;
+	char *line = NULL;
 	int fd;
 
-	counter = 0;
-	i = 0;
-	fd = open(argv[1], 0)
-	while (full_map[i] != NULL)
+	height = 0;
+	fd = open(argv[1], O_RDONLY);
+	while (get_next_line(fd, &line) && line != NULL)
 	{
-		counter++;
-		i++;
+		height++;
+		free(line);
 	}
-	return (counter);
+	return (height);
 }
-
+ */
 void read_map(int argc, char **argv, t_data	*data)
 {
 	int		fd;
@@ -107,14 +106,13 @@ void read_map(int argc, char **argv, t_data	*data)
 	}
 	data->map->full[i] = NULL;
 	data->map->height = i;
-/* 	int i = 0;
-	while (data->map->full[i])
-		ft_printf("%s", data->map->full[i++]); */
 	close(fd);
-
 	//free(data->map->full);
 	//map_check(data);
 }
+/* 	int i = 0;
+	while (data->map->full[i])
+		ft_printf("%s", data->map->full[i++]); */
 
 /* void read_map(char **argv)
 {

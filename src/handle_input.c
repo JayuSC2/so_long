@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:27:11 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/07 13:22:38 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 15:45:33 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int up_down(int keysym, t_data *data)
 		}
 		else if (data->map->full[data->map->player.y - 1][data->map->player.x] == 1)
 			return (0);
+		
 	}
 	else if (keysym == KEY_S || keysym == KEY_DOWN)
 	{
@@ -38,7 +39,7 @@ int up_down(int keysym, t_data *data)
 		else if (data->map->full[data->map->player.y + 1][data->map->player.x] == 1)
 			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int left_right(int keysym, t_data *data)
@@ -67,7 +68,7 @@ int left_right(int keysym, t_data *data)
 		else if (data->map->full[data->map->player.y][data->map->player.x + 1] == 1)
 			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int close_game(int keysym, t_data *data)

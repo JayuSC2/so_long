@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/07 13:14:15 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 14:32:48 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_map
 	char	**full;
 	int		width;
 	int		height;
+	int		max_lines;
 	int		collectibles;
 	int		exit;
 	t_player		player;
@@ -118,6 +119,7 @@ int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);
 void	read_map(int argc, char **argv, t_data *data);
 void	map_check(t_data *data);
+int		count_height(int argc, char **argv);
 void	count_collectibles(t_data *data);
 void	init_game(t_data *data);
 void	texture_to_image(t_data *data);
