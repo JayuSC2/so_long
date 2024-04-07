@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/07 12:18:22 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:50:59 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,15 @@ void	map_check(t_data *data)
     }
 } */
 
-size_t count_height(char **full_map)
+size_t count_height(int argc, char **argv, t_data *data)
 {
 	size_t counter;
 	int i;
+	int fd;
 
 	counter = 0;
 	i = 0;
+	fd = open(argv[1], 0)
 	while (full_map[i] != NULL)
 	{
 		counter++;

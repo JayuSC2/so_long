@@ -4,6 +4,7 @@
 		"string_view": "c",
 		"initializer_list": "c",
 		"ranges": "c",
+		"editor.inlayHints.enabled": "off",
 		"utility": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/07 12:31:31 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:36:36 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ void	init_player(t_data *data)
                 data->map->full[i][j] = '0';
                 data->map->player.x = j;
                 data->map->player.y = i;
+				ft_printf("%d\n", data->map->player.is_set);
             }
             j++;
         }
         i++;
     }
     if (data->map->player.is_set == 0)
-        ft_error("Error\nInvalid map");
+        ft_error("Error\nInvalid map10");
 }
 
 void	init_game(t_data *data)
 {
 	init_map(data);
 	init_variables(data);
-	//init_player(data);
 }
 
 /* void	fill(char **full_map, t_point size, t_point cur, char fill_char)
