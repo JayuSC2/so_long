@@ -6,23 +6,12 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/06 17:01:05 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 12:18:22 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
-} */
 void	check_arguments(int argc, char **argv)
 {
     if (argc != 2)
@@ -91,27 +80,39 @@ size_t count_height(char **full_map)
 	return (counter);
 }
 
-/* size_t	count_height(char **full_map)
+void read_map(int argc, char **argv, t_data	*data)
 {
-	int counter;
+	int		fd;
+	char	*line = NULL;
+	(void)argc;
 	int i;
-	int j;
-	
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nInvalid map6");
+	ft_printf("%s", "test1\n");
+	ft_printf("%s", "test2\n");
 	i = 0;
-	counter = 0;
-	while (full_map[i])
+	while ((get_next_line(fd, &line) == 0 && line != NULL))
 	{
-		j = 0;
-		while (full_map[i][j] != '\0')
-		{
-			if (full_map[i][j] == '\0')
-				counter++;
-			j++;
-		}
+		data->map->full[i] = malloc((ft_strlen(line) + 1) * sizeof(char));
+		if (!data->map->full[i])
+			ft_error("Error\nInvalid map7");
+		ft_strlcpy(data->map->full[i], line, ft_strlen(line) + 1);
+		data->map->width = ft_strlen(line);
 		i++;
+		free(line);
 	}
-	return (counter);
-} */
+	data->map->full[i] = NULL;
+	data->map->height = i;
+/* 	int i = 0;
+	while (data->map->full[i])
+		ft_printf("%s", data->map->full[i++]); */
+	close(fd);
+
+	//free(data->map->full);
+	//map_check(data);
+}
 
 /* void read_map(char **argv)
 {
@@ -208,39 +209,6 @@ size_t count_height(char **full_map)
 	close(fd);
     //map_check(&data);
 } */
-void read_map(int argc, char **argv, t_data	*data)
-{
-	int		fd;
-	char	*line = NULL;
-	(void)argc;
-	int i;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		ft_error("Error\nInvalid map6");
-	ft_printf("%s", "test1\n");
-	ft_printf("%s", "test2\n");
-	i = 0;
-	while ((get_next_line(fd, &line) == 0 && line != NULL))
-	{
-		data->map->full[i] = (char *)malloc((ft_strlen(line) + 1) * sizeof(char));
-		if (!data->map->full[i])
-			ft_error("Error\nInvalid map7");
-		ft_strlcpy(data->map->full[i], line, ft_strlen(line) + 1);
-		data->map->width = ft_strlen(line);
-		i++;
-		free(line);
-	}
-	data->map->full[i] = NULL;
-	data->map->height = i;
-/* 	int i = 0;
-	while (data->map->full[i])
-		ft_printf("%s", data->map->full[i++]); */
-	close(fd);
-
-	//free(data.map->full);
-	//map_check(&data);
-}
 
 /* void	read_map (char **argv)
 {

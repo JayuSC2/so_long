@@ -6,25 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 17:07:39 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:14:20 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int handle_input(int keysym, t_data *data)
-{
-	if (keysym == KEY_ESC)
-	{
-		printf("The %d key (ESC) has been pressed!", keysym);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		mlx_destroy_display(data->mlx_ptr);
-		free(data->mlx_ptr);
-		exit(1);
-	}
-	printf("Pressed key: %d\n", keysym);
-	return (0);
-}
 
 int on_destroy(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/06 17:08:10 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:14:15 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	init_map(t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
 void	check_arguments(int argc, char **argv);
+int		handle_input(int keysym, t_data *data);
 int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/06 17:10:07 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/07 12:31:31 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_map(t_data *data)
 {
 	data->map = malloc(sizeof(t_map));
-	data->map->full = (char **)malloc(9 * sizeof(char *));
+	data->map->full = malloc(9 * sizeof(char *));
 	data->map->height = 0;
 	data->map->width = 0;
 }

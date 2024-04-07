@@ -7,7 +7,8 @@ src/init_game.c \
 src/read_map.c \
 src/check_map.c \
 src/render_map.c \
-src/utils.c
+src/utils.c \
+src/handle_input.c
 
 OBJS = $(SRC:.c=.o)
 
