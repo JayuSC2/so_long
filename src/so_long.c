@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/08 15:22:00 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 17:16:23 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int on_destroy(t_data *data)
 int main(int argc, char **argv)
 {
 	t_data 	data;
-	char	*line;
+	//char	*line;
 	
 	ft_bzero(&data, sizeof(data));
 	//init_game(&data);
@@ -40,13 +40,26 @@ int main(int argc, char **argv)
 	if (data.fd == -1)
 		return (1);
 	//CREATE MAP
-	ft_printf("%s\n", "test3\n");
+	ft_printf("Test1\n");
+	create_map(&data);
+/* 	ft_printf("Test2\n");
 	line = read_map(&data);
 	if (!line)
 		//free
 		return (1);
+	int count = 0;
+	while (line && line[count])
+	{
+		if (line[0] == '\n')
+			return (ft_error("Error: empty line in beginning of file\n"), 1);
+		if (line[count] == '\n' && line[count + 1] == '\n')
+			return (ft_error("Error: empty line in file\n"), 1);
+		if (line[ft_strlen(line) - 1] == '\n')
+			return (ft_error("Error: empty line at the end of file\n"), 1);
+		count++;
+	} */
 	//check str for empty lines!!!!!!!!!!!!!!!!!!!!
-	data.map = ft_split(line, '\n');
+	data.map = ft_split(data.line, '\n');
 	if (data.map == NULL)
 		//free
 		return (1);
@@ -57,30 +70,6 @@ int main(int argc, char **argv)
 		ft_printf("%s\n", data.map[i]);
 		i++;
 	}
-	// ////read_map(argc, argv, &data);
-	// check_if_rectangular(&data);
-	// ft_printf("%s", "test4\n");
-	// ft_printf("%s", "test5\n");
-
-
-	//CREATE/RUN GAME
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
-		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
-	if (!data.win_ptr)
-		return (free(data.mlx_ptr), 1);
-	texture_to_image(&data);
-	ft_printf("%s", "test6\n");
-
-
-
-	
-	render_map(&data);
-	ft_printf("%s", "test7\n");
-	mlx_key_hook(data.win_ptr, &handle_input, &data);
-	////mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-	mlx_loop(data.mlx_ptr);
+	create_game(&data);
 	return (0);
 }

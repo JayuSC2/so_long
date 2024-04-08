@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:56:01 by julian            #+#    #+#             */
-/*   Updated: 2024/04/08 15:22:24 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:57:07 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	render_map(t_data *data)
 	
 	//data->map = malloc(sizeof(t_map));
 	i = 0;
-    while (i < data->height)
+    while (data->map[i])
     {
         j = 0;
-        while (j < data->width)
+        while (data->map[i][j])
         {
             if (data->map[i][j] == '1')
                 mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->wall, j * 16, i * 16);

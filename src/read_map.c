@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/08 15:14:30 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 17:08:33 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	check_arguments(int argc, char **argv)
 {
     if (argc != 2)
-        ft_error("Error\nInvalid map1");
+        ft_error("Error: Usage: ./so_long <mapname>\n");
     if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
     {
-		ft_error("Error\nInvalid map2");
+		ft_error("Error: Map has to be .ber file\n");
 	}
 }
 
@@ -112,9 +112,6 @@ char	*read_map(t_data *data)
 // 	close(fd);
 // 	//free(data->map);
 // }
-/* 	int i = 0;
-	while (data->map[i])
-		ft_printf("%s", data->map[i++]); */
 
 /* void read_map(char **argv)
 {

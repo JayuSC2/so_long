@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/08 14:44:42 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:52:16 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_data
 	int		player_is_set;
 	int		player_moves;
 	int		fd;
+	char	*line;
 	char	**map;
 	int		width;
 	int		height;
@@ -118,6 +119,8 @@ typedef struct s_data
 	//t_map	*map;
 }				t_data;
 
+int		create_game(t_data *data);
+int		create_map(t_data *data);
 void	init_game(t_data *data);
 void	init_map(t_data *data);
 void	init_player(t_data *data);
