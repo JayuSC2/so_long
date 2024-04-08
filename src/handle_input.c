@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:27:11 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/07 15:45:33 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 14:50:41 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,28 @@ int up_down(int keysym, t_data *data)
 {
 	if (keysym == KEY_W || keysym == KEY_UP)
 	{
-		if (data->map->full[data->map->player.y - 1][data->map->player.x] == '0')
+		if (data->map[data->player_y - 1][data->player_x] != '1')
 		{
-			data->map->full[data->map->player.y][data->map->player.x] = '0';
-			data->map->full[data->map->player.y - 1][data->map->player.x] = 'P';
-			data->map->player.y -= 1;
-			data->map->player.moves++;
+			data->map[data->player_y][data->player_x] = '0';
+			data->map[data->player_y - 1][data->player_x] = 'P';
+			data->player_y--;
+			data->player_moves++;
 		}
-		else if (data->map->full[data->map->player.y - 1][data->map->player.x] == 1)
+		//else if (data->map->map[data->map->player.y - 1][data->map->player.x] == 1)
+		else
 			return (0);
 		
 	}
 	else if (keysym == KEY_S || keysym == KEY_DOWN)
 	{
-		if (data->map->full[data->map->player.y + 1][data->map->player.x] == '0')
+		if (data->map[data->player_y + 1][data->player_x] != '1')
 		{
-			data->map->full[data->map->player.y][data->map->player.x] = '0';
-			data->map->full[data->map->player.y + 1][data->map->player.x] = 'P';
-			data->map->player.y += 1;
-			data->map->player.moves++;
+			data->map[data->player_y][data->player_x] = '0';
+			data->map[data->player_y + 1][data->player_x] = 'P';
+			data->player_y += 1;
+			data->player_moves++;
 		}
-		else if (data->map->full[data->map->player.y + 1][data->map->player.x] == 1)
+		else
 			return (0);
 	}
 	return (1);
@@ -46,26 +47,26 @@ int left_right(int keysym, t_data *data)
 {
 	if (keysym == KEY_A || keysym == KEY_LEFT)
 	{
-		if (data->map->full[data->map->player.y][data->map->player.x - 1] == '0')
+		if (data->map[data->player_y][data->player_x - 1] != '1')
 		{
-			data->map->full[data->map->player.y][data->map->player.x] = '0';
-			data->map->full[data->map->player.y][data->map->player.x - 1] = 'P';
-			data->map->player.x -= 1;
-			data->map->player.moves++;
+			data->map[data->player_y][data->player_x] = '0';
+			data->map[data->player_y][data->player_x - 1] = 'P';
+			data->player_x -= 1;
+			data->player_moves++;
 		}
-		else if (data->map->full[data->map->player.y][data->map->player.x - 1] == 1)
+		else
 			return (0);
 	}
 	else if (keysym == KEY_D || keysym == KEY_RIGHT)
 	{
-		if (data->map->full[data->map->player.y][data->map->player.x + 1] == '0')
+		if (data->map[data->player_y][data->player_x + 1] != '1')
 		{
-			data->map->full[data->map->player.y][data->map->player.x] = '0';
-			data->map->full[data->map->player.y][data->map->player.x + 1] = 'P';
-			data->map->player.x += 1;
-			data->map->player.moves++;
+			data->map[data->player_y][data->player_x] = '0';
+			data->map[data->player_y][data->player_x + 1] = 'P';
+			data->player_x += 1;
+			data->player_moves++;
 		}
-		else if (data->map->full[data->map->player.y][data->map->player.x + 1] == 1)
+		else
 			return (0);
 	}
 	return (1);

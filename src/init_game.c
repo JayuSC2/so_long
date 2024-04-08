@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/07 14:53:59 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 14:53:16 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,32 @@
 
 void	init_map(t_data *data)
 {
-	data->map = malloc(sizeof(t_map));
-	data->map->full = malloc(9 * sizeof(char *));
-	data->map->height = 0;
-	data->map->width = 0;
+	int 	fd;
+	char	**full;
+	int		width;
+	int		height;
+	int		collectibles;
+	int		exit;
+
+	
+	// //map = NULL;
+	// //data->map = NULL; //malloc(sizeof(t_map));
+	// ft_printf("%s", "test2\n");
+	// data->map->full = NULL; //malloc(9 * sizeof(char *));
+	// // ft_printf("%s", "test\n");
+	// data->map->height = 0;
+	// ft_printf("%s", "test3\n");
+	// data->map->width = 0;
 }
 
 void    init_variables(t_data *data)
 {
-    data->map->collectibles = 0;
-    data->map->exit = 0;
-    data->map->player.x = 0;
-    data->map->player.y = 0;
-    data->map->player.is_set = 0;
-    data->map->player.moves = 0;
+    data->collectibles = 0;
+    data->exit = 0;
+    data->player_x = 0;
+    data->player_y = 0;
+    data->player_is_set = 0;
+    data->player_moves = 0;
 }
 
 void	init_player(t_data *data)
@@ -36,32 +48,36 @@ void	init_player(t_data *data)
     int j;
 
     i = 0;
-    while (data->map->full[i])
+    while (data->map[i])
     {
         j = 0;
-        while (data->map->full[i][j])
+        while (data->map[i][j])
         {
-            if (data->map->full[i][j] == 'P')
+            if (data->map[i][j] == 'P')
             {
-                data->map->player.is_set = 1;
-                data->map->full[i][j] = '0';
-                data->map->player.x = j;
-                data->map->player.y = i;
-				ft_printf("%d\n", data->map->player.is_set);
+                data->player_is_set = 1;
+                data->map[i][j] = '0';
+                data->player_x = j;
+                data->player_y = i;
+				ft_printf("%d\n", data->player_is_set);
             }
             j++;
         }
         i++;
     }
-    if (data->map->player.is_set == 0)
+    if (data->player_is_set == 0)
         ft_error("Error\nInvalid map10");
 }
 
-void	init_game(t_data *data)
+/* void	init_game(t_data *data)
 {
+	
+
 	init_map(data);
 	init_variables(data);
-}
+	ft_printf("%s", "test5\n");
+} */
+
 
 /* void	fill(char **full_map, t_point size, t_point cur, char fill_char)
 {

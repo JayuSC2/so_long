@@ -3,9 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g
 MLX = -lmlx -lX11 -lXext
 SRC = src/so_long.c \
-src/init_game.c \
 src/read_map.c \
-src/check_map.c \
 src/render_map.c \
 src/utils.c \
 src/handle_input.c

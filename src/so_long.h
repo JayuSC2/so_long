@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/07 14:32:48 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/08 14:44:42 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ typedef struct s_point
 	int y;
 }				t_point;
 
-typedef struct s_player
+/* typedef struct s_player
 {
-	int		x;
-	int		y;
-	int		is_set;
-	int		moves;
-}				t_player; 
+	int		player_x;
+	int		player_y;
+	int		player_is_set;
+	int		player_moves;
+}				t_player;  */
 
 typedef struct s_image
 {
@@ -81,19 +81,29 @@ typedef struct s_image
 	int		y;
 }				t_image;
 
-typedef struct s_map
+/* typedef struct s_map
 {
+	int		fd;
 	char	**full;
 	int		width;
 	int		height;
-	int		max_lines;
 	int		collectibles;
 	int		exit;
 	t_player		player;
-}				t_map;
+}				t_map; */
 
 typedef struct s_data
 {
+	int		player_x;
+	int		player_y;
+	int		player_is_set;
+	int		player_moves;
+	int		fd;
+	char	**map;
+	int		width;
+	int		height;
+	int		collectibles;
+	int		exit;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	to_fill;
@@ -105,7 +115,7 @@ typedef struct s_data
 	t_image *player_back;
 	t_image *player_left;
 	t_image *player_right;
-	t_map	*map;
+	//t_map	*map;
 }				t_data;
 
 void	init_game(t_data *data);
@@ -117,8 +127,11 @@ int		handle_input(int keysym, t_data *data);
 int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);
-void	read_map(int argc, char **argv, t_data *data);
-void	map_check(t_data *data);
+char	*read_map(t_data *data);
+//void	read_map(int argc, char **argv, t_data *data);
+//void	init_map(t_map *map);
+void	check_map(char **full_map, t_data *data);
+void	check_if_rectangular(t_data *data);
 int		count_height(int argc, char **argv);
 void	count_collectibles(t_data *data);
 void	init_game(t_data *data);
