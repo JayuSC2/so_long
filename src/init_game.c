@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/09 17:31:19 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 18:43:29 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	count_collectibles(t_data *data)
         }
         i++;
     }
-	ft_printf("%d\n", data->collectibles);
     if (data->collectibles < 1)
         ft_error("Error: Invalid Map, insufficient collectibles");
 }

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/09 17:41:06 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 18:40:27 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	init_game(t_data *data);
 void	init_map(t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
+void	calculate_map_dimensions(t_data *data);
 void	check_arguments(int argc, char **argv);
 int		valid_characters(t_data *data);
 void	count_collectibles(t_data *data);
@@ -136,7 +137,7 @@ void	ft_error(char *str);
 char	*read_map(t_data *data);
 //void	read_map(int argc, char **argv, t_data *data);
 //void	init_map(t_map *map);
-void	check_map(char **full_map, t_data *data);
+int		check_map(t_data *data);
 int		check_if_rectangular(t_data *data);
 int		count_height(int argc, char **argv);
 void	count_collectibles(t_data *data);

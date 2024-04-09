@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/09 17:57:34 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 18:35:05 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int main(int argc, char **argv)
 	ft_printf("Test1\n");
 	if (create_map(&data) == 1)
 		return (1);
-	valid_characters(&data);
-	check_if_rectangular(&data);
+	// valid_characters(&data);
+	// check_if_rectangular(&data);
 /* 	ft_printf("Test2\n");
 	line = read_map(&data);
 	if (!line)
@@ -86,6 +86,7 @@ int main(int argc, char **argv)
 	free(data.line);
 	init_player(&data);
 	count_collectibles(&data);
+	check_map(&data);
 	create_game(&data);
 	return (0);
 }
