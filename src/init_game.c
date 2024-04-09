@@ -6,41 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/08 14:53:16 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 17:31:19 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init_map(t_data *data)
-{
-	int 	fd;
-	char	**full;
-	int		width;
-	int		height;
-	int		collectibles;
-	int		exit;
-
-	
-	// //map = NULL;
-	// //data->map = NULL; //malloc(sizeof(t_map));
-	// ft_printf("%s", "test2\n");
-	// data->map->full = NULL; //malloc(9 * sizeof(char *));
-	// // ft_printf("%s", "test\n");
-	// data->map->height = 0;
-	// ft_printf("%s", "test3\n");
-	// data->map->width = 0;
-}
-
-void    init_variables(t_data *data)
-{
-    data->collectibles = 0;
-    data->exit = 0;
-    data->player_x = 0;
-    data->player_y = 0;
-    data->player_is_set = 0;
-    data->player_moves = 0;
-}
 
 void	init_player(t_data *data)
 {
@@ -56,7 +26,7 @@ void	init_player(t_data *data)
             if (data->map[i][j] == 'P')
             {
                 data->player_is_set = 1;
-                data->map[i][j] = '0';
+                //data->map[i][j] = '0';
                 data->player_x = j;
                 data->player_y = i;
 				ft_printf("%d\n", data->player_is_set);
@@ -66,7 +36,31 @@ void	init_player(t_data *data)
         i++;
     }
     if (data->player_is_set == 0)
-        ft_error("Error\nInvalid map10");
+        ft_error("Error: no Player found\n");
+}
+
+void	count_collectibles(t_data *data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (data->map[i])
+    {
+        j = 0;
+        while (data->map[i][j])
+        {
+            if (data->map[i][j] == 'C')
+            {
+                data->collectibles++;
+            }
+            j++;
+        }
+        i++;
+    }
+	ft_printf("%d\n", data->collectibles);
+    if (data->collectibles < 1)
+        ft_error("Error: Invalid Map, insufficient collectibles");
 }
 
 /* void	init_game(t_data *data)

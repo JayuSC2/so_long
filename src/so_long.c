@@ -6,17 +6,34 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/08 17:16:23 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 17:57:34 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <mlx.h>
+
+void	print_map(t_data *data)
+{
+	int i = 0;
+	while (data->map[i])
+	{
+		ft_printf("%s\n", data->map[i]);
+		i++;
+	}
+}
 
 int on_destroy(t_data *data)
 {
+	mlx_destroy_image(data->mlx_ptr, data->floor->xpm_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->wall->xpm_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->collectible->xpm_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->player_front->xpm_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->exit_closed->xpm_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	ft_free(data->map);
 	exit(0);
 	return(0);
 }
@@ -41,7 +58,10 @@ int main(int argc, char **argv)
 		return (1);
 	//CREATE MAP
 	ft_printf("Test1\n");
-	create_map(&data);
+	if (create_map(&data) == 1)
+		return (1);
+	valid_characters(&data);
+	check_if_rectangular(&data);
 /* 	ft_printf("Test2\n");
 	line = read_map(&data);
 	if (!line)
@@ -62,14 +82,10 @@ int main(int argc, char **argv)
 	data.map = ft_split(data.line, '\n');
 	if (data.map == NULL)
 		//free
-		return (1);
-		
- 	int i = 0;
-	while (data.map[i])
-	{
-		ft_printf("%s\n", data.map[i]);
-		i++;
-	}
+		return (free(data.line), 1);
+	free(data.line);
+	init_player(&data);
+	count_collectibles(&data);
 	create_game(&data);
 	return (0);
 }

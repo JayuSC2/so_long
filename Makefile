@@ -3,12 +3,14 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g
 MLX = -lmlx -lX11 -lXext
 SRC = src/so_long.c \
-src/create_game.c \
+src/check_map.c \
 src/read_map.c \
 src/create_map.c \
+src/create_game.c \
 src/render_map.c \
 src/utils.c \
-src/handle_input.c
+src/handle_input.c \
+src/init_game.c
 
 OBJS = $(SRC:.c=.o)
 

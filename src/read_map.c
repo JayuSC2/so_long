@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/08 17:08:33 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 15:17:00 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,6 @@ void	check_arguments(int argc, char **argv)
 		ft_error("Error: Map has to be .ber file\n");
 	}
 }
-
-/* void count_collectibles(t_data *data)
-{
-    int i;
-    int j;
-
-    i = 0;
-    data->map->collectibles = 0;
-    while (data->map[i])
-    {
-        j = 0;
-        while (data->map[i][j])
-        {
-            if (data->map[i][j] == 'C')
-                data->map->collectibles++;
-            j++;
-        }
-        i++;
-    }
-} */
 
 /* int	count_height(int argc, char **argv)
 {
@@ -68,6 +48,8 @@ char	*read_map(t_data *data)
 	if (!temp)
 		return (NULL);
 	line = ft_strdup("");
+	if(!line)
+		return(free(temp), NULL);
 	//NULL CHECK
 	bytes_read = 1;
 	while (bytes_read > 0 && !(ft_strchr(line, EOF)))
@@ -75,9 +57,9 @@ char	*read_map(t_data *data)
 		bytes_read = read(data->fd, temp, 1);
 		if (bytes_read == -1)
 			//clear all and exit
-			return (NULL);
+			return (free(line), free(temp), NULL);
 		temp[bytes_read] = '\0';
-		line = ft_strjoin(line, temp);
+		line = ft_join_and_free(line, temp);
 		if (!line)
 			return (NULL);
 	}

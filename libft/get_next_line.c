@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:29:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 11:33:12 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 11:35:10 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_join_and_free(char *text, char *buffer)
 	char	*temp;
 
 	temp = ft_strjoin(text, buffer);
+	if(!temp)
+		return (free(text), free(buffer), NULL);
 	free(text);
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:57:28 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/27 17:15:10 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/09 10:35:03 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 int		get_next_line(int fd, char **line);
 //char	*get_next_line(int fd);
 char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_join_and_free(char *text, char *buffer);
 char	*ft_strchr(const char *s, int c);
 char	*read_line(int fd, char *text);
 char	*extract_line(char *text);
