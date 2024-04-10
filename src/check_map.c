@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/04/10 16:08:53 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/10 20:07:33 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,50 @@ int		valid_characters(t_data *data)
 	return (0);
 }
 
-/* void	validate_path(char **map, t_point size, t_point cur, char fill_char, t_data *data)
+void	validate_path(char **map, t_point size, t_point cur, char fill_char, t_data *data)
 {
-	
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x || data->map[cur.y][cur.x] != fill_char)
-		return;
-	data->map[cur.y][cur.x] = 1;
-	validate_path(data->map, size, (t_point){cur.x -1, cur.y}, fill_char, data);
-	validate_path(data->map, size, (t_point){cur.x +1, cur.y}, fill_char, data);
-	validate_path(data->map, size, (t_point){cur.x, cur.y -1}, fill_char, data);
-	validate_path(data->map, size, (t_point){cur.x, cur.y +1}, fill_char, data);
+	char **dup;
+
+	map = data->map;
+	dup = ft_strarraydup(map);
+	if (!dup)
+		return (NULL);
+	cur.x = data->player_x;
+	cur.y = data->player_y;
+
+	/* if(cur.x < 0 || cur.y < 0 || cur.x >= size.x || cur.y >= size.y)
+		return; */
+	if (dup[cur.x][cur.y] == '1' || dup[cur.x][cur.y] == 'V')
+		return ;
+	if (dup[cur.x][cur.y] == 'C')
+		data->collectibles--;
+	if (dup[cur.x][cur.y] == 'E' && data->collectibles != 0)
+		return ;
+	if (dup[cur.x][cur.y] == 'E')
+		data->exit--;
+	{
+		if (fill_char == 'P')
+			return ;
+		else
+		{
+			ft_error("Error: Invalid Map, exit not reachable\n");
+			ft_free(dup);
+			return ;
+		}
+	}
+	dup[cur.x][cur.y] = 'V';
+	validate_path(dup, size, (t_point){cur.x + 1, cur.y}, fill_char, data);
+	validate_path(dup, size, (t_point){cur.x - 1, cur.y}, fill_char, data);
+	validate_path(dup, size, (t_point){cur.x, cur.y + 1}, fill_char, data);
+	validate_path(dup, size, (t_point){cur.x, cur.y - 1}, fill_char, data);
+	ft_free(dup);
 }
 
 void	validate_map(char **map, t_point size, t_point begin, t_data *data)
 {
 	validate_path(data->map, size, begin, data->map[begin.x][begin.y], data);
 }
- */
+
 
 int		check_map(t_data *data)
 {
