@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_freearray.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 10:03:36 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/10 14:15:11 by juitz            ###   ########.fr       */
+/*   Created: 2024/04/10 15:43:32 by juitz             #+#    #+#             */
+/*   Updated: 2024/04/10 15:53:36 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-void	*ft_memset(void *s, int x, size_t len)
+void	ft_free(char **strarray)
 {
-	unsigned char	*p;
+	int	i;
 
-	p = s;
-	while (len--)
-	{
-		*p++ = (unsigned char)x;
-	}
-	return (s);
+	i = 0;
+	if (strarray == NULL)
+		return ;
+	while (strarray[i])
+		free(strarray[i++]);
+	free(strarray);
 }
-/*
-int	main(void)
-{
-	char arr[] = "Hello";
-
-	printArray(arr, 5);
-	ft_memset(arr, '1', 5);
-	printArray(arr, 5);
-	return (0);
-}
-*/

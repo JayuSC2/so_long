@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/04/09 18:55:44 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/10 16:08:53 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	calculate_map_dimensions(t_data *data)
 			width++;
 	}
 	data->width = width;
+	ft_printf("%d\n", data->height);
+	ft_printf("%d\n", data->width);
 }
 
 int		check_if_rectangular(t_data *data)
@@ -51,7 +53,6 @@ int		check_if_rectangular(t_data *data)
 	return (0);
 }
 
-
 int		valid_characters(t_data *data)
 {
     int i;
@@ -65,9 +66,9 @@ int		valid_characters(t_data *data)
         {
             if (data->map[i][j] != '1' && data->map[i][j] != '0' && data->map[i][j] != 'P' && data->map[i][j] != 'C' && data->map[i][j] != 'E')
                 return(ft_error("Error: Invalid character in map\n"), 1);
-            if (data->map[0][j] != '1' && data->map[data->height - 1][j] != '1')
+            if (data->map[0][j] != '1' || data->map[data->height - 1][j] != '1')
                 return(ft_error("Error: Map must be surrounded by walls\n"), 1);
-            if (data->map[i][0] != '1' && data->map[i][data->width - 1] != '1')
+            if (data->map[i][0] != '1' || data->map[i][data->width - 1] != '1')
                 return(ft_error("Error: Map must be surrounded by walls\n"), 1);
             j++;
         }
@@ -76,34 +77,40 @@ int		valid_characters(t_data *data)
 	return (0);
 }
 
-int check_map(t_data *data)
+/* void	validate_path(char **map, t_point size, t_point cur, char fill_char, t_data *data)
 {
-	calculate_map_dimensions(data);
-	valid_characters(data);
-	check_if_rectangular(data);
-	return (0);	
+	
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x || data->map[cur.y][cur.x] != fill_char)
+		return;
+	data->map[cur.y][cur.x] = 1;
+	validate_path(data->map, size, (t_point){cur.x -1, cur.y}, fill_char, data);
+	validate_path(data->map, size, (t_point){cur.x +1, cur.y}, fill_char, data);
+	validate_path(data->map, size, (t_point){cur.x, cur.y -1}, fill_char, data);
+	validate_path(data->map, size, (t_point){cur.x, cur.y +1}, fill_char, data);
 }
 
-/* void	count_collectibles(t_data *data)
+void	validate_map(char **map, t_point size, t_point begin, t_data *data)
 {
-    int i;
-    int j;
+	validate_path(data->map, size, begin, data->map[begin.x][begin.y], data);
+}
+ */
 
-    i = 0;
-    while (data->map[i])
-    {
-        j = 0;
-        while (data->map[i][j])
-        {
-            if (data->map[i][j] == 'C')
-            {
-                data->collectibles++;
-            }
-            j++;
-        }
-        i++;
-    }
-	ft_printf("%d\n", data->collectibles);
-    if (data->collectibles < 1)
-        ft_error("Error: Invalid Map, insufficient collectibles");
-} */
+int		check_map(t_data *data)
+{
+	if (data->players != 1)
+        return (ft_error("Error: Invalid Map, incorrect number of players(1)\n"), 1);
+	if (data->collectibles < 1)
+        return (ft_error("Error: Invalid Map, insufficient collectibles\n"), 1);
+	if (data->exit != 1)
+		return (ft_error("Error: Invalid Map, incorrect number of exits(1)\n"), 1);
+	calculate_map_dimensions(data);
+	if (valid_characters(data) == 1)
+		return(1);
+	check_if_rectangular(data);
+	//get dup
+	//check NULL for dup
+	//return if NULL, free EVYRETHING
+	//check_path
+	//free dup
+	return (0);	
+}

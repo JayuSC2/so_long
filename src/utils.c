@@ -6,28 +6,28 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/04/05 12:13:31 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:42:35 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free(char **str)
-{
-	int	i;
+// void	ft_free(char **strarray)
+// {
+// 	int	i;
 
-	i = 0;
-	if (str == NULL)
-		return ;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
+// 	i = 0;
+// 	if (strarray == NULL)
+// 		return ;
+// 	while (strarray[i])
+// 		free(strarray[i++]);
+// 	free(strarray);
+// }
 
 void	ft_error(char *str)
 {
     ft_putstr_fd(str, 2);
-    exit(1);
+    //exit(1);
 }
 
 /* int main(int argc, char **argv)

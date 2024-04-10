@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/09 18:40:27 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:50:25 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@
 
 typedef struct s_point
 {
-	int size;
+	//int size;
 	int cur;
 	int x;
 	int y;
@@ -98,6 +98,7 @@ typedef struct s_data
 	int		player_y;
 	int		player_is_set;
 	int		player_moves;
+	int		players;
 	int		fd;
 	char	*line;
 	char	**map;
@@ -119,7 +120,7 @@ typedef struct s_data
 	//t_map	*map;
 }				t_data;
 
-void	print_map(t_data *data);
+void	print_map(char **map);
 int		create_game(t_data *data);
 int		create_map(t_data *data);
 void	init_game(t_data *data);
@@ -129,7 +130,7 @@ void	init_variables(t_data *data);
 void	calculate_map_dimensions(t_data *data);
 void	check_arguments(int argc, char **argv);
 int		valid_characters(t_data *data);
-void	count_collectibles(t_data *data);
+void	count_parameters(t_data *data);
 int		handle_input(int keysym, t_data *data);
 int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
@@ -140,7 +141,7 @@ char	*read_map(t_data *data);
 int		check_map(t_data *data);
 int		check_if_rectangular(t_data *data);
 int		count_height(int argc, char **argv);
-void	count_collectibles(t_data *data);
+//void	count_collectibles(t_data *data);
 void	init_game(t_data *data);
 void	texture_to_image(t_data *data);
 void	render_map(t_data *data);

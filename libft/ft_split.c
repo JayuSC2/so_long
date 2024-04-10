@@ -39,7 +39,7 @@ static size_t	get_word_len(const char *s, char c)
 		return ((size_t)(ft_strchr(s, c) - s));
 }
 
-static char	**ft_free(char **s)
+static char	**ft_freestrarray(char **s)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 			word_len = get_word_len(s, c);
 			split_strings[i] = ft_substr(s, 0, word_len);
 			if (!(split_strings[i++]))
-				return (ft_free(split_strings), NULL);
+				return (ft_freestrarray(split_strings), NULL);
 			s += word_len;
 		}
 	}

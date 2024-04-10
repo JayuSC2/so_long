@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/09 18:43:29 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/10 14:01:09 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,14 @@ void	init_player(t_data *data)
                 //data->map[i][j] = '0';
                 data->player_x = j;
                 data->player_y = i;
-				ft_printf("%d\n", data->player_is_set);
             }
             j++;
         }
         i++;
     }
-    if (data->player_is_set == 0)
-        ft_error("Error: no Player found\n");
 }
 
-void	count_collectibles(t_data *data)
+void	count_parameters(t_data *data)
 {
     int i;
     int j;
@@ -51,48 +48,24 @@ void	count_collectibles(t_data *data)
         while (data->map[i][j])
         {
             if (data->map[i][j] == 'C')
-            {
                 data->collectibles++;
-            }
-            j++;
+			if (data->map[i][j] == 'E')
+				data->exit++;
+			if (data->map[i][j] == 'P')
+				data->players++;
+			j++;
         }
         i++;
     }
-    if (data->collectibles < 1)
-        ft_error("Error: Invalid Map, insufficient collectibles");
+	ft_printf("%d\n", data->players);
 }
 
-/* void	init_game(t_data *data)
+void	init_game(t_data *data)
 {
-	
-
-	init_map(data);
-	init_variables(data);
-	ft_printf("%s", "test5\n");
-} */
-
-
-/* void	fill(char **full_map, t_point size, t_point cur, char fill_char)
-{
-	//char **full_map;
-
-	//fill_char = data.to_fill;
-	//full_map = data.map->full;
-
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x || full_map[cur.y][cur.x] != fill_char)
-		return;
-	full_map[cur.y][cur.x] = 1;
-	fill(full_map, size, (t_point){cur.x -1, cur.y}, fill_char);
-	fill(full_map, size, (t_point){cur.x +1, cur.y}, fill_char);
-	fill(full_map, size, (t_point){cur.x, cur.y -1}, fill_char);
-	fill(full_map, size, (t_point){cur.x, cur.y +1}, fill_char);
+	init_player(data);
+	count_parameters(data);
 }
 
-void	fill_map(char **full_map, t_point size, t_point begin)
-{
-	fill(full_map, size, begin, full_map[begin.x][begin.y]);
-}
- */
 
 /* void	init_game(t_data *data)
 {
