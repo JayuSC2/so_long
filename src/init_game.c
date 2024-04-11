@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/10 14:01:09 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 12:08:39 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	count_parameters(t_data *data)
         }
         i++;
     }
-	ft_printf("%d\n", data->players);
 }
 
 void	init_game(t_data *data)

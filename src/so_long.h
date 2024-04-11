@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/10 15:50:25 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 14:02:19 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@
 
 typedef struct s_point
 {
-	//int size;
-	int cur;
 	int x;
 	int y;
 }				t_point;
@@ -125,6 +123,8 @@ int		create_game(t_data *data);
 int		create_map(t_data *data);
 void	init_game(t_data *data);
 void	init_map(t_data *data);
+int		validate_map(t_data *data);
+int		validate_path(char **dup, t_point cur, char fill_char, t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
 void	calculate_map_dimensions(t_data *data);

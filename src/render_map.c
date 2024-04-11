@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:56:01 by julian            #+#    #+#             */
-/*   Updated: 2024/04/09 17:29:04 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 15:41:35 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	texture_to_image(t_data *data)
     data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, COLLECTIBLE1_XPM, &w, &h);
     data->exit_closed = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_CLOSED_XPM, &w, &h);
     data->player_front = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_FRONT_XPM, &w, &h);
-	/* if (!data->wall || !data->floor || !data->collectible || !data->exit_closed || !data->player_front)
+/* 	if (!data->wall || !data->floor || !data->collectible || !data->exit_closed || !data->player_front)
 		return(ft_free(data->map, mlx_destroy_image())) */
 }
 

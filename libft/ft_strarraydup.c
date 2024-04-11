@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:14:29 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/10 16:06:45 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 12:09:39 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ char	**ft_strarraydup(char **strarray)
 	i = 0;
 	while (strarray[i])
 	{
-		//ft_printf("%s\n", strarray[i]);
 		strarraydup[i] = ft_strdup(strarray[i]);
 		if (!strarraydup[i])
 			return (ft_free(strarraydup), NULL);
-		ft_printf("%s\n", strarraydup[i]);
 		i++;
 	}
 	strarraydup[i] = NULL;

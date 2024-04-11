@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/10 16:07:54 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 15:38:06 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,12 @@ int on_destroy(t_data *data)
 int main(int argc, char **argv)
 {
 	t_data 	data;
-	//char	*line;
 	
 	ft_bzero(&data, sizeof(data));
-	//init_game(&data);
-
 	check_arguments(argc, argv);
 	data.fd = open(argv[1], O_RDONLY);
 	if (data.fd == -1)
 		return (1);
-	//CREATE MAP
-	//ft_printf("Test1\n");
 	if (create_map(&data) == 1)
 		return (free(data.line), 1);
 	data.map = ft_split(data.line, '\n');
@@ -59,10 +54,6 @@ int main(int argc, char **argv)
 		//free
 		return (free(data.line), 1);
 	free(data.line);
-	ft_printf("Test1\n");
-	char **full_map;
-	full_map = ft_strarraydup(data.map);
-	print_map(full_map);
 	init_game(&data);
 	if (check_map(&data) == 1)
 		return(ft_free(data.map), 1);

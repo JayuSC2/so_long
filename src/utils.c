@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/04/10 15:42:35 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 15:35:54 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@
 // 		free(strarray[i++]);
 // 	free(strarray);
 // }
+void	calculate_map_dimensions(t_data *data)
+{
+	int	height;
+	int	width;
+	
+	height = 0;
+	while (data->map[height] != NULL)
+		height++;
+	data->height = height;
+
+	width = 0;
+	if (data->map[0] != NULL) 
+	{
+		while (data->map[0][width])
+			width++;
+	}
+	data->width = width;
+}
 
 void	ft_error(char *str)
 {
