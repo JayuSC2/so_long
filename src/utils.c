@@ -6,23 +6,12 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/04/11 15:35:54 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 17:41:13 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// void	ft_free(char **strarray)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (strarray == NULL)
-// 		return ;
-// 	while (strarray[i])
-// 		free(strarray[i++]);
-// 	free(strarray);
-// }
 void	calculate_map_dimensions(t_data *data)
 {
 	int	height;
@@ -72,3 +61,15 @@ void	ft_error(char *str)
     close(fd);
     return (0);
 } */
+
+// void	ft_free(char **strarray)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (strarray == NULL)
+// 		return ;
+// 	while (strarray[i])
+// 		free(strarray[i++]);
+// 	free(strarray);
+// }

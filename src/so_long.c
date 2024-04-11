@@ -6,22 +6,11 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/11 15:38:06 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 17:40:49 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <mlx.h>
-
-void	print_map(char **map)
-{
-	int i = 0;
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
-}
 
 int on_destroy(t_data *data)
 {
@@ -60,3 +49,13 @@ int main(int argc, char **argv)
 	create_game(&data);
 	return (0);
 }
+
+/* void	print_map(char **map)
+{
+	int i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
+} */

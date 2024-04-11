@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/09 15:17:00 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/11 17:33:56 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,6 @@ void	check_arguments(int argc, char **argv)
 	}
 }
 
-/* int	count_height(int argc, char **argv)
-{
-	int height;
-	char *line = NULL;
-	int fd;
-
-	height = 0;
-	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &line) && line != NULL)
-	{
-		height++;
-		free(line);
-	}
-	return (height);
-} */
-
 char	*read_map(t_data *data)
 {
 	char	*line;
@@ -50,7 +34,6 @@ char	*read_map(t_data *data)
 	line = ft_strdup("");
 	if(!line)
 		return(free(temp), NULL);
-	//NULL CHECK
 	bytes_read = 1;
 	while (bytes_read > 0 && !(ft_strchr(line, EOF)))
 	{
