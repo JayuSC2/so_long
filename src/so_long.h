@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/11 14:02:19 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 14:02:55 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ typedef struct s_data
 	int		width;
 	int		height;
 	int		collectibles;
+	int		dup_collectibles;
 	int		exit;
+	int		dup_exit;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	to_fill;
@@ -128,10 +130,11 @@ int		validate_path(char **dup, t_point cur, char fill_char, t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
 void	calculate_map_dimensions(t_data *data);
-void	check_arguments(int argc, char **argv);
+int		check_arguments(int argc, char **argv);
 int		valid_characters(t_data *data);
 void	count_parameters(t_data *data);
 int		handle_input(int keysym, t_data *data);
+void	movement(int keysym, t_data *data);
 int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);

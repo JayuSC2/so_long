@@ -9,6 +9,7 @@ src/create_map.c \
 src/create_game.c \
 src/render_map.c \
 src/utils.c \
+src/movement.c \
 src/handle_input.c \
 src/init_game.c
 

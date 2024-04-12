@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:45:06 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/11 17:31:00 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 13:57:30 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	create_map(t_data *data)
 	while (data->line && data->line[count])
 	{
 		if (data->line[0] == '\n')
-			return (ft_error("Error: empty line in beginning of file\n"), 1);
+			return (ft_error("Error\nempty line in beginning of file\n"), 1);
 		if (data->line[count] == '\n' && data->line[count + 1] == '\n')
-			return (ft_error("Error: empty line in file\n"), 1);
+			return (ft_error("Error\nempty line in file\n"), 1);
 		if (data->line[ft_strlen(data->line) - 1] == '\n')
-			return (ft_error("Error: empty line at the end of file\n"), 1);
+			return (ft_error("Error\nempty line at the end of file\n"), 1);
 		count++;
 	}
 	return (0);

@@ -6,20 +6,19 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:13:29 by julian            #+#    #+#             */
-/*   Updated: 2024/04/11 17:33:56 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 14:05:27 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_arguments(int argc, char **argv)
+int	check_arguments(int argc, char **argv)
 {
     if (argc != 2)
-        ft_error("Error: Usage: ./so_long <mapname>\n");
+        return (ft_error("Error\nUsage: ./so_long <mapname>\n"), 1);
     if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-    {
-		ft_error("Error: Map has to be .ber file\n");
-	}
+		return (ft_error("Error\nMap has to be .ber file\n"), 1);
+	return (0);
 }
 
 char	*read_map(t_data *data)

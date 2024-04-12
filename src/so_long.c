@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/11 17:40:49 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 14:06:03 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int main(int argc, char **argv)
 	t_data 	data;
 	
 	ft_bzero(&data, sizeof(data));
-	check_arguments(argc, argv);
+	if (check_arguments(argc, argv) == 1)
+		return (1);
 	data.fd = open(argv[1], O_RDONLY);
 	if (data.fd == -1)
 		return (1);

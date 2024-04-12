@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/04/11 15:35:32 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 13:57:09 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int		check_if_rectangular(t_data *data)
 		while (data->map[i][j])
 			j++;
 		if (j != data->width)
-			return(ft_error("Error: Map is not rectangular\n"), 1);
+			return(ft_error("Error\nMap is not rectangular\n"), 1);
 		i++;
 	}
 	if (i > j)
-		return (ft_error("Error: Map is not rectangular\n"), 1);
+		return (ft_error("Error\nMap is not rectangular\n"), 1);
 	return (0);
 }
 
@@ -44,11 +44,11 @@ int		valid_characters(t_data *data)
         while (data->map[i][j])
         {
             if (data->map[i][j] != '1' && data->map[i][j] != '0' && data->map[i][j] != 'P' && data->map[i][j] != 'C' && data->map[i][j] != 'E')
-                return(ft_error("Error: Invalid character in map\n"), 1);
+                return(ft_error("Error\nInvalid character in map\n"), 1);
             if (data->map[0][j] != '1' || data->map[data->height - 1][j] != '1')
-                return(ft_error("Error: Map must be surrounded by walls\n"), 1);
+                return(ft_error("Error\nMap must be surrounded by walls\n"), 1);
             if (data->map[i][0] != '1' || data->map[i][data->width - 1] != '1')
-                return(ft_error("Error: Map must be surrounded by walls\n"), 1);
+                return(ft_error("Error\nMap must be surrounded by walls\n"), 1);
             j++;
         }
         i++;
@@ -58,15 +58,15 @@ int		valid_characters(t_data *data)
 
 int		validate_path(char **dup, t_point cur, char fill_char, t_data *data)
 {
-	if (data->exit == 0 && data->collectibles == 0)
+	if (data->dup_exit == 0 && data->dup_collectibles == 0)
 		return (0);
 	if (dup[cur.y][cur.x] == '1' || dup[cur.y][cur.x] == 'V')
 		return (1);
 	if (dup[cur.y][cur.x] == 'C')
-		data->collectibles--;
+		data->dup_collectibles--;
 	if (dup[cur.y][cur.x] == 'E')
 	{
-		data->exit--;
+		data->dup_exit--;
 		dup[cur.y][cur.x] = 'V';
 		return (1);
 	}
@@ -75,9 +75,9 @@ int		validate_path(char **dup, t_point cur, char fill_char, t_data *data)
 	validate_path(dup, (t_point){cur.x - 1, cur.y}, fill_char, data);
 	validate_path(dup, (t_point){cur.x, cur.y + 1}, fill_char, data);
 	validate_path(dup, (t_point){cur.x, cur.y - 1}, fill_char, data);
-	if (data->exit == 1)
+	if (data->dup_exit == 1)
 		return (1);
-	if (data->exit == 0 && data->collectibles == 0)
+	if (data->dup_exit == 0 && data->dup_collectibles == 0)
 		return (0);
 	return (1);
 }
@@ -87,6 +87,8 @@ int		validate_map(t_data *data)
 	char **dup;
 	t_point cur;
 
+	data->dup_collectibles = data->collectibles;
+	data->dup_exit = data->exit;
 	ft_bzero(&cur, sizeof(cur));
 	dup = ft_strarraydup(data->map);
 	if (!dup)
@@ -95,7 +97,7 @@ int		validate_map(t_data *data)
 	cur.y = data->player_y;
 	if(validate_path(dup, cur, dup[cur.y][cur.x], data) == 1)
 		return(ft_free(dup), 1);
-	print_map(dup);
+	//print_map(dup);
 	ft_free(dup);
 	return (0);
 }
@@ -103,16 +105,16 @@ int		validate_map(t_data *data)
 int		check_map(t_data *data)
 {
 	if (data->players != 1)
-        return (ft_error("Error: Invalid Map, incorrect number of players(1)\n"), 1);
+        return (ft_error("Error\nInvalid Map, incorrect number of players(1)\n"), 1);
 	if (data->collectibles < 1)
-        return (ft_error("Error: Invalid Map, insufficient collectibles\n"), 1);
+        return (ft_error("Error\nInvalid Map, insufficient collectibles\n"), 1);
 	if (data->exit != 1)
-		return (ft_error("Error: Invalid Map, incorrect number of exits(1)\n"), 1);
+		return (ft_error("Error\nInvalid Map, incorrect number of exits(1)\n"), 1);
 	calculate_map_dimensions(data);
 	if (valid_characters(data) == 1)
 		return(1);
 	check_if_rectangular(data);
 	if (validate_map(data) == 1)
-		return (ft_error("Error: Invalid Path"), 1);
+		return (ft_error("Error\nInvalid Path"), 1);
 	return (0);	
 }
