@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 19:22:06 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 19:23:48 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 # include <mlx.h>
 # include "../libft/libft.h"
 
-# define WINDOW_TITLE "so_long"
-# define GAME_WIDTH 
-# define GAME_HEIGHT 480
 # define TEXTURE_WIDTH 16
 # define TEXTURE_HEIGHT 16
 # define COLLECTIBLES_AMOUNT 3
