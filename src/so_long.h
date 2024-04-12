@@ -6,13 +6,14 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 14:02:55 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 15:57:15 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define _DEFAULT_SOURCE
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+#define _DEFAULT_SOURCE
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -24,8 +25,8 @@
 #include "../libft/libft.h"
 
 #define WINDOW_TITLE "so_long"
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define GAME_WIDTH 
+#define GAME_HEIGHT 480
 #define TEXTURE_WIDTH 16
 #define TEXTURE_HEIGHT 16
 #define COLLECTIBLES_AMOUNT 3
@@ -44,10 +45,10 @@
 
 #define WALL_XPM "./textures/walls/wall.xpm"
 #define FLOOR_XPM "./textures/floors/floor.xpm"
-#define COLLECTIBLE1_XPM "./textures/collectibles/chest_01_0.xpm"
-#define EXIT_CLOSED_XPM "./textures/exits/exit_closed.xpm"
+#define CHEST_XPM "./textures/collectibles/chest_01_0.xpm"
+#define EXIT_1_XPM "./textures/exits/exit_closed.xpm"
 #define OPEN_EXIT_XPM "./textures/exits/open_exit.xpm"
-#define PLAYER_FRONT_XPM "./textures/characters/player_front.xpm"
+#define PLAYER_XPM "./textures/characters/player_front.xpm"
 #define PLAYER_BACK_XPM "./textures/characters/player_back.xpm"
 #define PLAYER_LEFT_XPM "./textures/characters/player_left.xpm"
 #define PLAYER_RIGHT_XPM "./textures/characters/player_right.xpm"
@@ -64,14 +65,6 @@ typedef struct s_point
 	int y;
 }				t_point;
 
-/* typedef struct s_player
-{
-	int		player_x;
-	int		player_y;
-	int		player_is_set;
-	int		player_moves;
-}				t_player;  */
-
 typedef struct s_image
 {
 	void	*xpm_ptr;
@@ -79,21 +72,12 @@ typedef struct s_image
 	int		y;
 }				t_image;
 
-/* typedef struct s_map
-{
-	int		fd;
-	char	**full;
-	int		width;
-	int		height;
-	int		collectibles;
-	int		exit;
-	t_player		player;
-}				t_map; */
-
 typedef struct s_data
 {
-	int		player_x;
-	int		player_y;
+	int		p_x;
+	int		p_y;
+	int		map_x;
+	int		map_y;
 	int		player_is_set;
 	int		player_moves;
 	int		players;
@@ -102,6 +86,7 @@ typedef struct s_data
 	char	**map;
 	int		width;
 	int		height;
+	int		map_size;
 	int		collectibles;
 	int		dup_collectibles;
 	int		exit;
@@ -111,13 +96,12 @@ typedef struct s_data
 	char	to_fill;
 	t_image *floor;
 	t_image *wall;
-	t_image *collectible;
-	t_image *exit_closed;
-	t_image *player_front;
+	t_image *chest;
+	t_image *exit_1;
+	t_image *player;
 	t_image *player_back;
 	t_image *player_left;
 	t_image *player_right;
-	//t_map	*map;
 }				t_data;
 
 void	print_map(char **map);
@@ -139,12 +123,9 @@ int		on_destroy(t_data *data);
 int		on_keypress(int keysym, t_data *data);
 void	ft_error(char *str);
 char	*read_map(t_data *data);
-//void	read_map(int argc, char **argv, t_data *data);
-//void	init_map(t_map *map);
 int		check_map(t_data *data);
 int		check_if_rectangular(t_data *data);
 int		count_height(int argc, char **argv);
-//void	count_collectibles(t_data *data);
 void	init_game(t_data *data);
 void	texture_to_image(t_data *data);
 void	render_map(t_data *data);

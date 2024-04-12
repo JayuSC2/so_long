@@ -6,31 +6,31 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 14:06:03 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 15:46:33 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int on_destroy(t_data *data)
+int	on_destroy(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->floor);
 	mlx_destroy_image(data->mlx_ptr, data->wall);
-	mlx_destroy_image(data->mlx_ptr, data->collectible);
-	mlx_destroy_image(data->mlx_ptr, data->player_front);
-	mlx_destroy_image(data->mlx_ptr, data->exit_closed);
+	mlx_destroy_image(data->mlx_ptr, data->chest);
+	mlx_destroy_image(data->mlx_ptr, data->player);
+	mlx_destroy_image(data->mlx_ptr, data->exit_1);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	ft_free(data->map);
 	exit(0);
-	return(0);
+	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data 	data;
-	
+	t_data	data;
+
 	ft_bzero(&data, sizeof(data));
 	if (check_arguments(argc, argv) == 1)
 		return (1);
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 	free(data.line);
 	init_game(&data);
 	if (check_map(&data) == 1)
-		return(ft_free(data.map), 1);
+		return (ft_free(data.map), 1);
 	create_game(&data);
 	return (0);
 }

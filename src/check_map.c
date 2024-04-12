@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/04/12 13:57:09 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 15:57:58 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int		validate_map(t_data *data)
 	dup = ft_strarraydup(data->map);
 	if (!dup)
 		return (1);
-	cur.x = data->player_x;
-	cur.y = data->player_y;
+	cur.x = data->p_x;
+	cur.y = data->p_y;
 	if(validate_path(dup, cur, dup[cur.y][cur.x], data) == 1)
 		return(ft_free(dup), 1);
 	//print_map(dup);

@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:37:20 by julian            #+#    #+#             */
-/*   Updated: 2024/04/11 17:33:26 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 15:58:21 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void	init_player(t_data *data)
 			if (data->map[i][j] == 'P')
 			{
 				data->player_is_set = 1;
-				//data->map[i][j] = '0';
-				data->player_x = j;
-				data->player_y = i;
+				data->p_x = j;
+				data->p_y = i;
 			}
 			j++;
 		}
