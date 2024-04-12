@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:45:06 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 13:57:30 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 19:08:20 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	create_map(t_data *data)
 
 	data->line = read_map(data);
 	if (!data->line)
-		//free
 		return (1);
 	count = 0;
 	while (data->line && data->line[count])

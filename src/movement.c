@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:21:10 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 16:59:55 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 17:27:35 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	up(int keysym, t_data *data)
 		else if ((data->map[data->p_y - 1][data->p_x] == 'E')
 		&& (data->collectibles == 0))
 		{
-			ft_printf("\nCongratulations: You won\n");
+			ft_printf("\nCongratulations: You won!\n");
 			on_destroy(data);
 		}
 	}
@@ -62,7 +62,7 @@ void	down(int keysym, t_data *data)
 		else if ((data->map[data->p_y + 1][data->p_x] == 'E')
 		&& (data->collectibles) == 0)
 		{
-			ft_printf("\nCongratulations: You won\n");
+			ft_printf("\nCongratulations: You won!\n");
 			on_destroy(data);
 		}
 	}
@@ -90,7 +90,7 @@ void	left(int keysym, t_data *data)
 		else if ((data->map[data->p_y][data->p_x - 1] == 'E')
 		&& (data->collectibles == 0))
 		{
-			ft_printf("\nCongratulations: You won\n");
+			ft_printf("\nCongratulations: You won!\n");
 			on_destroy(data);
 		}
 	}
@@ -118,7 +118,7 @@ void	right(int keysym, t_data *data)
 		else if ((data->map[data->p_y][data->p_x + 1] == 'E')
 		&& (data->collectibles == 0))
 		{
-			ft_printf("\nCongratulations: You won\n");
+			ft_printf("\nCongratulations: You won!\n");
 			on_destroy(data);
 		}
 	}

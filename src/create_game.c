@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 17:22:51 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 15:20:16 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 18:58:34 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	create_game(t_data *data)
 
 	w = data->width;
 	h = data->height;
+	if ((w * 16) > 1920 || (h * 16) > 1080)
+		return (ft_error("Error\nMap too big\n"), ft_free(data->map), 1);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (ft_free(data->map), 1);

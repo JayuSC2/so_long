@@ -6,13 +6,13 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:21:59 by julian            #+#    #+#             */
-/*   Updated: 2024/04/12 16:01:48 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 19:05:12 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	calculate_map_dimensions(t_data *data)
+int	check_map_dimensions(t_data *data)
 {
 	int	height;
 	int	width;
@@ -29,6 +29,7 @@ void	calculate_map_dimensions(t_data *data)
 	}
 	data->width = width;
 	data->map_size = (data->width * data->height);
+	return (0);
 }
 
 void	ft_error(char *str)

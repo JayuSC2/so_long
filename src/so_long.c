@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 15:46:33 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 18:42:46 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int argc, char **argv)
 		return (free(data.line), 1);
 	data.map = ft_split(data.line, '\n');
 	if (data.map == NULL)
-		//free
 		return (free(data.line), 1);
 	free(data.line);
 	init_game(&data);

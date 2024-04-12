@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:56:01 by julian            #+#    #+#             */
-/*   Updated: 2024/04/12 17:15:56 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/12 19:06:43 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	texture_to_image(t_data *data)
 	data->chest = mlx_xpm_file_to_image(data->mlx_ptr, CHEST_XPM, &w, &h);
 	data->exit_1 = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_1_XPM, &w, &h);
 	data->player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_XPM, &w, &h);
+	protect_file_to_image(data);
 }
 
 void	render_map(t_data *data)
@@ -55,8 +56,22 @@ void	render_map(t_data *data)
 	}
 }
 
-void	protect_file_to_image(t_data *data)
+int	protect_file_to_image(t_data *data)
 {
-	if (!data->wall || !data->floor || !data->chest || !data->exit_1 || !data->player)
-		return(ft_free(data->map, mlx_destroy_image(data->mlx_ptr, data->wall));
+	if (!data->wall)
+		return (ft_free(data->map),
+			mlx_destroy_image(data->mlx_ptr, data->wall), 1);
+	if (!data->floor)
+		return (ft_free(data->map),
+			mlx_destroy_image(data->mlx_ptr, data->floor), 1);
+	if (!data->chest)
+		return (ft_free(data->map),
+			mlx_destroy_image(data->mlx_ptr, data->chest), 1);
+	if (!data->exit_1)
+		return (ft_free(data->map),
+			mlx_destroy_image(data->mlx_ptr, data->exit_1), 1);
+	if (!data->player)
+		return (ft_free(data->map),
+			mlx_destroy_image(data->mlx_ptr, data->player), 1);
+	return (0);
 }
