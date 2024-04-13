@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 17:22:51 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 18:58:34 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/13 13:40:30 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	create_game(t_data *data)
 		return (ft_free(data->map), 1);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, (w * 16), (h * 16), "s_l");
 	if (!data->win_ptr)
-		return (free(data->mlx_ptr), ft_free(data->map), 1);
-	texture_to_image(data);
+		return (mlx_destroy_display(data->mlx_ptr), free(data->mlx_ptr),
+			ft_free(data->map), 1);
+	if (texture_to_image(data) == 1)
+		return (1);
 	render_map(data);
 	mlx_key_hook(data->win_ptr, &handle_input, data);
 	mlx_hook(data->win_ptr, 17, (1L << 17), &on_destroy, data);

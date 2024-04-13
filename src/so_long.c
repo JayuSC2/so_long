@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:17:03 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 18:42:46 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/13 13:32:42 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	on_destroy(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->floor);
-	mlx_destroy_image(data->mlx_ptr, data->wall);
-	mlx_destroy_image(data->mlx_ptr, data->chest);
-	mlx_destroy_image(data->mlx_ptr, data->player);
-	mlx_destroy_image(data->mlx_ptr, data->exit_1);
+	if (data->floor != NULL)
+		mlx_destroy_image(data->mlx_ptr, data->floor);
+	if (data->wall != NULL)
+		mlx_destroy_image(data->mlx_ptr, data->wall);
+	if (data->chest != NULL)
+		mlx_destroy_image(data->mlx_ptr, data->chest);
+	if (data->player != NULL)
+		mlx_destroy_image(data->mlx_ptr, data->player);
+	if (data->exit_1 != NULL)
+		mlx_destroy_image(data->mlx_ptr, data->exit_1);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);

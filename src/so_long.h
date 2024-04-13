@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:36:09 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 19:23:48 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/13 13:51:05 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int		validate_map(t_data *data);
 int		validate_path(char **dup, t_point cur, char fill_char, t_data *data);
 void	init_player(t_data *data);
 void	init_variables(t_data *data);
-int		check_map_dimensions(t_data *data);
+void	check_map_dimensions(t_data *data);
 int		check_arguments(int argc, char **argv);
 int		valid_characters(t_data *data);
 void	count_parameters(t_data *data);
@@ -119,7 +119,7 @@ int		check_map(t_data *data);
 int		check_if_rectangular(t_data *data);
 int		count_height(int argc, char **argv);
 void	init_game(t_data *data);
-void	texture_to_image(t_data *data);
+int		texture_to_image(t_data *data);
 void	render_map(t_data *data);
 void	ft_free(char **str);
 

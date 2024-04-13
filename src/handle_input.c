@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:27:11 by juitz             #+#    #+#             */
-/*   Updated: 2024/04/12 15:54:58 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/13 13:27:54 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	close_game(int keysym, t_data *data)
 {
 	if (keysym == KEY_ESC)
-	{
-		ft_printf("\nThe %d key (ESC) has been pressed!\n", keysym);
 		on_destroy(data);
-	}
 	return (0);
 }
 

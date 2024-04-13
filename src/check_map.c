@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:07:52 by julian            #+#    #+#             */
-/*   Updated: 2024/04/12 19:18:43 by juitz            ###   ########.fr       */
+/*   Updated: 2024/04/13 13:53:52 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	check_if_rectangular(t_data *data)
 			return (1);
 		i++;
 	}
-	if (i > j)
-		return (1);
 	return (0);
 }
 
@@ -111,13 +109,12 @@ int	check_map(t_data *data)
 		return (ft_error("Error\nInvalid Map, insufficient C.\n"), 1);
 	if (data->exit != 1)
 		return (ft_error("Error\nInvalid Map, incorrect number of E.\n"), 1);
-	if (check_map_dimensions(data) == 1)
-		return (ft_error("Error\nInvalid Map, too big.\n"), 1);
-	if (valid_characters(data) == 1)
-		return (1);
+	check_map_dimensions(data);
 	if (check_if_rectangular(data) == 1)
 		return (ft_error("Error\nMap is not rectangular.\n"), 1);
+	if (valid_characters(data) == 1)
+		return (1);
 	if (validate_map(data) == 1)
-		return (ft_error("Error\nInvalid Path.\n"), 1);
+		return (ft_error("Error\nInvalid player path.\n"), 1);
 	return (0);
 }
